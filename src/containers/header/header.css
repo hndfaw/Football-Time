@@ -9,11 +9,11 @@ header {
 .logo {
   height: 100px;
   position: absolute;
-  left: 40px;
+  left: 20px;
 }
 
 .header-tabs-container {
-  background: lightgray;
+  background-image: linear-gradient(lightgray, rgba(211, 211, 211, 0.507));
   height: 100px;
   width: 100%;
 }
