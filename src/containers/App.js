@@ -3,6 +3,7 @@ import '../App.css';
 import { connect } from 'react-redux';
 import { fetchTodaysMatches } from '../apiCalls';
 import { setTodaysMatches } from '../actions';
+import  Header  from '../containers/Header'
 
 class App extends Component {
 
@@ -14,6 +15,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header />
       </div>
     );
   }
