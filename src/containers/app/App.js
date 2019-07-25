@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchTodaysMatches, fetchLeagues } from '../../apiCalls';
 import { setTodaysMatches, leaguesAction } from '../../actions';
 import  Header  from '../header/Header'
-import  MatchesContainer  from '../matchesContainer/MatchesContainer'
+import  Leagues  from '../leagues/Leagues'
 
 class App extends Component {
 
@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <MatchesContainer />
+        <Leagues />
       </div>
     );
   }

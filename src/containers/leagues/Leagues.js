@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Leagues.css';
-import MatchContainer from '../MatchContainer';
+import MatchContainer from '../matchesContainer/MatchesContainer';
 
 class Leagues extends Component {
   render() {
