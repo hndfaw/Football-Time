@@ -3,7 +3,7 @@ import '../App.css';
 import { connect } from 'react-redux';
 import { fetchTodaysMatches } from '../apiCalls';
 import { setTodaysMatches } from '../actions';
-import  Header  from '../containers/Header'
+import  Header  from './header/Header'
 
 class App extends Component {
 

@@ -1,0 +1,19 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  width: 100vw;
+  position: relative;
+}
+
+.logo {
+  height: 100px;
+  position: absolute;
+  left: 40px;
+}
+
+.header-tabs-container {
+  background: lightgray;
+  height: 100px;
+  width: 100%;
+}
