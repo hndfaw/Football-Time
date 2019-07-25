@@ -13,7 +13,7 @@ header {
 }
 
 .header-tabs-container {
-  background-image: linear-gradient(lightgray, rgba(211, 211, 211, 0.507));
+  background: lightgray;
   height: 100px;
   width: 100%;
 }
