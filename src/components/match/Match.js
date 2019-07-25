@@ -1,5 +1,5 @@
 import React from 'react';
-import './Match.css';
+import './match.css';
 
  const Match = ({match}) => {
   const date = match.event_date.split("").slice(0, 10)
