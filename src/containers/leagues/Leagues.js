@@ -12,6 +12,7 @@ class Leagues extends Component {
           if (league.league_id === match.league_id && !filteredLeagus.includes(league)) {filteredLeagus.push(league) }
         })
     })
+    
     const league = filteredLeagus.map(league => {
       return (
         <section key={league.league_id} id={league.league_id}>

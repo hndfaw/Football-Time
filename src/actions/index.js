@@ -3,7 +3,12 @@ export const leaguesAction = leaguesData => ({
   leaguesData
 })
 
-export const setTodaysMatches = (todayMatchesDate) => ({
+export const setTodaysMatches = todayMatchesDate => ({
   type: 'SET_TODAYS_MATCHES',
   todayMatchesDate
+})
+
+export const setTodaysDate = date => ({
+  type: 'SET_TODAYS_DATE',
+  date
 })

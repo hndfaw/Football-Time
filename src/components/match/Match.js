@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './match.css';
 
- const Match = ({match}) => {
-  const date = match.event_date.split("").slice(0, 10)
-
+  export class Match extends Component {
+  
+  render() {
+    const {match} = this.props
+    // const date = match.event_date.split("").slice(0, 10)
+  
   return (
     <section className="match-container">
       <div className="match-second-container">
@@ -21,9 +24,10 @@ import './match.css';
       </div>
       {(match.statusShort !== 'MF' && match.statusShort !== 'NS' && match.statusShort !== 'TBD') ? <div className="match-status">
         <p className="status-content">{match.elapsed}'</p>
-      </div> : <p className="date">{date}</p>}
+      </div> : <p className="date">{match.event_date}</p>}
     </section>
   )
+  }
 }
 
 
