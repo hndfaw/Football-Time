@@ -26,10 +26,9 @@ class Leagues extends Component {
       )
     })
     return (
-      <div>
-        {league}
-        
-      </div>
+      <main className="main">
+        {league} 
+      </main>
     )
   }
 }

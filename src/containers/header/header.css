@@ -1,9 +1,14 @@
 header {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  align-items: center;
   width: 100vw;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 120px;
+  background: #fff;
+  z-index: 2;
 }
 
 .logo {

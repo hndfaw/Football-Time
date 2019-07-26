@@ -12,6 +12,7 @@ class App extends Component {
     fetchTodaysMatches().then(data =>
       this.props.handleTodaysMatches(data)
       )
+
       fetchLeagues().then(data => this.filterLeagues(data))
   }
 
@@ -19,12 +20,12 @@ class App extends Component {
   filterLeagues = leaguesData => {
       const filteredLeagues = leaguesData.filter(league => {
        return  (
-          (league.name === 'Premier League') ||
-          (league.country === 'Spain' && league.name === 'Primera Division') ||
-          (league.country === 'Italy' && league.name === 'Serie A') ||
-          (league.country === 'France' && league.name === 'Ligue 1') ||
-          (league.name === 'Bundesliga 1') ||
-          (league.name === 'Champions League')
+          (league.country === 'England' && league.name === 'Premier League') ||
+          ( league.name === 'Primera Division') ||
+          (league.name === 'Serie A') ||
+          ( league.name === 'Ligue 1') ||
+          (league.country === 'Germany' && league.name === 'Bundesliga 1') ||
+          (league.country === 'World' && league.name === 'Champions League')
          )
           && league
       })
