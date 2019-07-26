@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Leagues.css';
+import './leagues.css';
 import MatchContainer from '../matchesContainer/MatchesContainer';
 
 class Leagues extends Component {
   render() {
-    const {liveMatches, leaguesData} = this.props;
+    const {todaysMatches, leaguesData} = this.props;
     const filteredLeagus = [];
-     liveMatches.forEach(match => {
+    todaysMatches.forEach(match => {
         leaguesData.forEach(league => {
           if (league.league_id === match.league_id && !filteredLeagus.includes(league)) {filteredLeagus.push(league) }
         })
@@ -36,7 +36,7 @@ class Leagues extends Component {
 
 const mapStateToProps = state => ({
   leaguesData: state.leaguesData,
-  liveMatches: state.liveMatches
+  todaysMatches: state.todaysMatches
 })
 
 export default connect(mapStateToProps, null)(Leagues)

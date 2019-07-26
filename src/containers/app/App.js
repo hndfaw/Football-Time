@@ -12,16 +12,27 @@ class App extends Component {
     fetchTodaysMatches().then(data =>
       this.props.handleTodaysMatches(data)
       )
-
-      fetchLeagues().then(data => {
-        // const filteredLeagues = data.filter(league => {
-        //  return  (league.season === 2019 && league.country === 'Spain') &&
-        //      league
-          
-        // })
-        this.props.handleLeagues(data)
-      })
+      fetchLeagues().then(data => this.filterLeagues(data))
   }
+
+
+  filterLeagues = leaguesData => {
+      const filteredLeagues = leaguesData.filter(league => {
+       return  (
+          (league.name === 'Premier League') ||
+          (league.country === 'Spain' && league.name === 'Primera Division') ||
+          (league.country === 'Italy' && league.name === 'Serie A') ||
+          (league.country === 'France' && league.name === 'Ligue 1') ||
+          (league.name === 'Bundesliga 1') ||
+          (league.name === 'Champions League')
+         )
+          && league
+      })
+      this.props.handleLeagues(filteredLeagues)
+  
+  }
+
+
   render() {
     return (
       <div className="App">
