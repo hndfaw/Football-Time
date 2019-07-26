@@ -6,7 +6,7 @@ import { setTodaysMatches, leaguesAction } from '../../actions';
 import  Header  from '../header/Header'
 import  Leagues  from '../leagues/Leagues'
 
-class App extends Component {
+export class App extends Component {
 
   componentDidMount() {
     fetchTodaysMatches().then(data =>
@@ -30,7 +30,6 @@ class App extends Component {
           && league
       })
       this.props.handleLeagues(filteredLeagues)
-  
   }
 
 
@@ -44,7 +43,7 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
   handleLeagues: data => dispatch(leaguesAction(data))
 
