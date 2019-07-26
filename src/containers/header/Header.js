@@ -11,23 +11,9 @@ class Header extends Component {
 
   addDate = e => {
     this.props.handleAddDate(e.target.value)
-    fetchTodaysMatches(e.target.value).then(data => this.cleanMatches(data))
+    fetchTodaysMatches(e.target.value).then(data => this.props.handleTodaysMatches(data.api.fixtures))
   }
 
-  cleanMatches = data => {
-    const cleanedData = data.map(match => {
-      const date = match.event_date.split("").slice(0, 10).join("")
-      return {
-        event_date: date,
-        league_id: match.league_id,
-        homeTeam: match.homeTeam,
-        awayTeam: match.awayTeam,
-        statusShort: match.statusShort,
-        fixture_id: match.fixture_id
-      }
-    })
-    this.props.handleTodaysMatches(cleanedData)
-  }
 
   render() {
     return (

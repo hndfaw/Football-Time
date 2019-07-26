@@ -1,12 +1,15 @@
 import { fetchLeagues } from './apiCalls';
 
 
+
 describe('apiCalls', () => {
 
   describe('fetchLeagues', () => {
 
   let mockLeague
+
   beforeEach( () => {
+
     mockLeague = [{
       'country': "Bangladesh",
       'country_code': "BD",
@@ -20,7 +23,8 @@ describe('apiCalls', () => {
       'season_start': "2016-07-24",
       'standings': 0,
     }];
-    window.fetch = jest.fn().mockImplementation(() => {
+
+     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve( {
         // ok: true,
         json: () => Promise.resolve(mockLeague)
@@ -28,13 +32,21 @@ describe('apiCalls', () => {
     })
   });
 
-  // it('fetchLeagues should be called with correct params', () => {
-  //   const expected = ['https://api-football-v1.p.rapidapi.com/v2/leagues'];
-  //   fetchLeagues();
-  //   expect(window.fetch).toHaveBeenCalledWith(...expected)
-  // })
+  // it('should be called with correct data', () => {
+  //   const expected = [
+  //     'https://api-football-v1.p.rapidapi.com/v2/leagues',
+  //     { method: 'GET', headers: {
+  //       "X-RapidAPI-Host" : "api-football-v1.p.rapidapi.com",
+  //       "X-RapidAPI-Key" : "e766c3e8damshc0c6531779b6d33p1f1ae8jsnc3322faa6a3f" }, body: JSON.stringify(mockLeague) }
+  //   ];
 
-  it.skip('fetchLeagues should return a parsed response if status is ok', async () =>{
+  //   fetchLeagues();
+
+  //   expect(window.fetch).toHaveBeenCalledWith(...expected);
+  // });
+
+
+  it('fetchLeagues should return a parsed response if status is ok', async () =>{
     const result = await fetchLeagues();
     fetchLeagues()
     expect(result).toEqual(mockLeague)
