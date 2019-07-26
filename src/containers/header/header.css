@@ -18,7 +18,7 @@ header {
 }
 
 .header-tabs-container {
-  background: lightgray;
+  background: rgb(78, 72, 72);
   height: 100px;
   width: 100%;
 }

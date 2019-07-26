@@ -21,9 +21,9 @@ class App extends Component {
       const filteredLeagues = leaguesData.filter(league => {
        return  (
           (league.country === 'England' && league.name === 'Premier League') ||
-          ( league.name === 'Primera Division') ||
-          (league.name === 'Serie A') ||
-          ( league.name === 'Ligue 1') ||
+          (league.country === 'Spain' && league.name === 'Primera Division') ||
+          (league.country === 'Italy' && league.name === 'Serie A') ||
+          (league.country === 'France' && league.name === 'Ligue 1') ||
           (league.country === 'Germany' && league.name === 'Bundesliga 1') ||
           (league.country === 'World' && league.name === 'Champions League')
          )
