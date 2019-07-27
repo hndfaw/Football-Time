@@ -12,9 +12,9 @@ import { selectedLeagueReducer } from './selectedLeagueReducer';
 export const rootReducer = combineReducers({
   leaguesData: leaguesReducer,
   todaysMatches: todaysMatchesReducer,
-  premierLeague: premierLeagueReducer,
-  league1: league1Reducer,
-  championsLeague: championsLeagueReducer,
+  league524: premierLeagueReducer,
+  league525: league1Reducer,
+  league530: championsLeagueReducer,
   bundesliga1: bundesliga1Reducer,
   primeraDivision: primeraDivisionReducer,
   selectedLeague: selectedLeagueReducer
