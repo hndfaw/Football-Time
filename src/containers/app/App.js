@@ -5,7 +5,8 @@ import { fetchTodaysMatches, fetchLeagues } from '../../apiCalls';
 import { setTodaysMatches, leaguesAction } from '../../actions';
 import  Header  from '../header/Header';
 import  Leagues  from '../leagues/Leagues';
-import { Route, Switch, NavLink, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import League from '../../containers/league/League';
 
 
 export class App extends Component {
@@ -37,17 +38,18 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        <Switch>
-          <Route exact path="/" render={() => (
-            <>
-               <Header />
-              <Leagues />
-            </>
-          )} />
-          <Route render={() => (
-            <h1>THE PAGE YOU TRIED TO ACCESS DOES NOT EXIST!</h1>
-          )}/>
-        </Switch>
+          <Header />
+          <Switch>
+            <Route exact path="/" render={() => (<Leagues />)} />
+            <Route exact path="/league" render={() => (
+              <>
+                <League />
+              </>
+            )} />
+            <Route render={() => (
+              <h1>THE PAGE YOU TRIED TO ACCESS DOES NOT EXIST!</h1>
+            )}/>
+          </Switch>
       </div>
     );
   }

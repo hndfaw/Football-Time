@@ -6,6 +6,7 @@
 
 .match-container {
   align-items: center;
+  background: #fff;
   border-bottom: 1px solid rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
@@ -14,8 +15,7 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  width: 97vw;
-  background: #fff;
+  width: 100vw;
 }
 
 .match-second-container {

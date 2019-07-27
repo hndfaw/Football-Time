@@ -2,8 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './leagues.css';
 import MatchContainer from '../matchesContainer/MatchesContainer';
+import { fetchTodaysMatches } from '../../apiCalls';
+import { setTodaysMatches } from '../../actions';
+
+
 
 class Leagues extends Component {
+
+  changeTodaysDate = e => {
+    fetchTodaysMatches(e.target.value).then(data => this.props.handleTodaysMatches(data.api.fixtures))
+  }
+
+
   render() {
     const {todaysMatches, leaguesData} = this.props;
     const filteredLeagus = [];
@@ -14,7 +24,7 @@ class Leagues extends Component {
     })
     
     const league = filteredLeagus.map(league => {
-      console.log(league)
+
       return (
         <section key={league.league_id} id={league.league_id}>
         <div className="league-container">
@@ -29,7 +39,11 @@ class Leagues extends Component {
     })
     return (
       <main className="main">
+        <div>
+              <input type="date" onChange={this.changeTodaysDate}/>
+        </div>
         {league} 
+        leaguess....
       </main>
     )
   }
@@ -40,4 +54,8 @@ const mapStateToProps = state => ({
   todaysMatches: state.todaysMatches
 })
 
-export default connect(mapStateToProps, null)(Leagues)
+const mapDispatchToProps = dispatch => ({
+  handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Leagues)

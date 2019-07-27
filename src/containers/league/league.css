@@ -1,32 +1,18 @@
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  margin-top: 10px;
-  background: rgb(238, 233, 233);
-}
-
-.logo {
-  height: 38px;
-  margin-left: 13px;
+.main {
+  margin-top: 60px;
 }
 
 
 .league-tabs-container {
   display: flex;
   width: 100%;
-  /* border: 1px solid blue; */
-  height: 60%
+  border-bottom: 1px solid gray;
+  height: 60px;
 }
 
 .league-tab {
   height: 100%;
-  width: 16.6666667%;
+  width: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
