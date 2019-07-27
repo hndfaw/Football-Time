@@ -32,3 +32,8 @@ export const setPrimeraDivision = matches => ({
   type: 'SET_PRIMERA_DIVISION',
   matches
 })
+
+export const setSelectedLeague = leagueName => ({
+  type: 'SET_SELECTED_LEAGUE',
+  leagueName
+})

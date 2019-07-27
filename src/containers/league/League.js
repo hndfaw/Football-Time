@@ -24,7 +24,6 @@ class League extends Component {
       } else {
         this.props.handlePrimeraDivision(data.api.fixtures)
       }
-      
     })
   }
 
@@ -46,7 +45,7 @@ class League extends Component {
           {leagueTab}
         </section>
         <section>
-        
+
         </section>
       </main>
     )
@@ -59,7 +58,8 @@ const mapStateToProps = state => ({
   league1: state.league1,
   championsLeague: state.championsLeague,
   bundesliga1: state.bundesliga1,
-  primeraDivision: state.primeraDivision
+  primeraDivision: state.primeraDivision,
+  selectedLeague: state.selectedLeague
 })
 
 const mapDispatchToProps = dispatch => ({
