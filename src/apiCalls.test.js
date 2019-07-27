@@ -1,4 +1,4 @@
-import { fetchLeagues, fetchTodaysMatches } from './apiCalls';
+import { fetchLeagues, fetchTodaysMatches , fetchOneLeaguesMatches} from './apiCalls';
 
 
 
@@ -64,21 +64,53 @@ describe('apiCalls', () => {
       })
     });
   
-    it('fetchLeagues should return a parsed response if status is ok', async () =>{
-      const result = await fetchTodaysMatches();
-      fetchTodaysMatches()
-      expect(result).toEqual(mockMatch)
-    })
-  
-    it('fetchFilms should return error if status is not ok', async () => {
-      window.fetch = jest.fn().mockImplementationOnce(() => {
-        return Promise.resolve( {
-          ok: false,
-        })
+      it('fetchLeagues should return a parsed response if status is ok', async () =>{
+        const result = await fetchTodaysMatches();
+        fetchTodaysMatches()
+        expect(result).toEqual(mockMatch)
       })
-      await expect(fetchTodaysMatches()).rejects.toEqual(Error('Error fetching todays matches'))
-    })
+  
+      it('fetchFilms should return error if status is not ok', async () => {
+        window.fetch = jest.fn().mockImplementationOnce(() => {
+          return Promise.resolve( {
+            ok: false,
+          })
+        })
+        await expect(fetchTodaysMatches()).rejects.toEqual(Error('Error fetching todays matches'))
+      })
   
     })
+
+    describe('fetchOneLeaguesMatches', () => {
+      let mockMatch
+      beforeEach( () => {
+        mockMatch = [{
+          'statusShort': "PST",
+        }];
+    
+         window.fetch = jest.fn().mockImplementation(() => {
+          return Promise.resolve( {
+            ok: true,
+            json: () => Promise.resolve(mockMatch)
+          })
+        })
+      });
+    
+      it('fetchLeagues should return a parsed response if status is ok', async () =>{
+        const result = await fetchOneLeaguesMatches();
+        fetchOneLeaguesMatches()
+        expect(result).toEqual(mockMatch)
+      })
+    
+      it('fetchFilms should return error if status is not ok', async () => {
+        window.fetch = jest.fn().mockImplementationOnce(() => {
+          return Promise.resolve( {
+            ok: false,
+          })
+        })
+        await expect(fetchOneLeaguesMatches()).rejects.toEqual(Error('Error fetching mathces of single league'))
+      })
+    
+      })
 
 })

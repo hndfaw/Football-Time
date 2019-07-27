@@ -37,3 +37,4 @@ export const setSelectedLeague = leagueName => ({
   type: 'SET_SELECTED_LEAGUE',
   leagueName
 })
+

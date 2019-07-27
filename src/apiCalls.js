@@ -34,7 +34,7 @@ export const fetchOneLeaguesMatches = leagueNum => {
  })
     .then(response => {
       if(!response.ok) {
-        throw Error ('Error fetching mathces of one league')
+        throw Error ('Error fetching mathces of single league')
       } else {
       return response.json()
       }
