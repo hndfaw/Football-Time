@@ -1,6 +1,10 @@
 import { leaguesReducer } from './leaguesReducer';
 import { todaysMatchesReducer } from './todaysMatchesReducer';
 import { premierLeagueReducer } from './premierLeagueReducer';
+import { primeraDivisionReducer } from './primeraDivisionReducer';
+import { selectedLeagueReducer } from './selectedLeagueReducer';
+import { league1Reducer } from './league1Reducer';
+import { bundesliga1Reducer } from './bundesliga1Reducer';
 
 describe('Reducers', () => {
 
@@ -50,7 +54,7 @@ describe('Reducers', () => {
     })
   })
 
-  describe('premierLeaguesReducer', () => {
+  describe('premierLeagueReducer', () => {
     it('should return the initial state', () => {
       const expected = [];
       const result = premierLeagueReducer(undefined, {})
@@ -68,6 +72,77 @@ describe('Reducers', () => {
     })
   })
 
+  describe('primeraDivisionReducer', () => {
+    it('should return the initial state', () => {
+      const expected = [];
+      const result = primeraDivisionReducer(undefined, {})
+      expect(result).toEqual(expected)
+    })
+
+    it('should return a an array of premier leagues matches', () => {
+      const expected = [{match: 'match'}]
+      const expectedAction = {
+        type: 'SET_PRIMERA_DIVISION',
+        matches: [{match: 'match'}]
+      }
+      const result = primeraDivisionReducer([], expectedAction)
+      expect(result).toEqual(expected)
+    })
+  })
+
+  describe('selectedLeagueReducer', () => {
+    it('should return the initial state', () => {
+      const expected = 'league524';
+      const result = selectedLeagueReducer(undefined, {})
+      expect(result).toEqual(expected)
+    })
+
+    it('should return new league name', () => {
+      const expected = 'league524'
+      const expectedAction = {
+        type: "SET_SELECTED_LEAGUE",
+        leagueName: "league524"
+      }
+      const result = selectedLeagueReducer([], expectedAction)
+      expect(result).toEqual(expected)
+    })
+  })
+
+  describe('league1Reducer', () => {
+    it('should return the initial state', () => {
+      const expected = [];
+      const result = league1Reducer(undefined, {})
+      expect(result).toEqual(expected)
+    })
+
+    it('should return a an array of league 1 matches', () => {
+      const expected = [{match: 'match'}]
+      const expectedAction = {
+        type: 'SET_LEAGUE_1',
+        matches: [{match: 'match'}]
+      }
+      const result = league1Reducer([], expectedAction)
+      expect(result).toEqual(expected)
+    })
+  })
+
+  describe('bundesliga1Reducer', () => {
+    it('should return the initial state', () => {
+      const expected = [];
+      const result = bundesliga1Reducer(undefined, {})
+      expect(result).toEqual(expected)
+    })
+
+    it('should return a an array of league 1 matches', () => {
+      const expected = [{match: 'match'}]
+      const expectedAction = {
+        type: 'SET_BUNDES_LIGA_1',
+        matches: [{match: 'match'}]
+      }
+      const result = bundesliga1Reducer([], expectedAction)
+      expect(result).toEqual(expected)
+    })
+  })
 
   
 })
