@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import logo from '../../images/football-time-logo-3.png';
+import logo from '../../images/football-time-logo.png';
 import './header.css';
-import { setTodaysMatches, setOneLeagueMatches } from '../../actions';
+import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision } from '../../actions';
 import { fetchTodaysMatches, fetchOneLeaguesMatches } from '../../apiCalls';
+import ballIcon from '../../images/ball-icon.png';
 
 
 class Header extends Component {
@@ -12,18 +13,36 @@ class Header extends Component {
     fetchTodaysMatches(e.target.value).then(data => this.props.handleTodaysMatches(data.api.fixtures))
   }
 
-  chaneOneLeaguesMatches = () => {
-    fetchOneLeaguesMatches(524).fetch(data => console.log(data))
-    this.props.handleSetOneLeagueMatches()
+  changeOneLeaguesMatches = e => {
+    let id = parseInt(e.target.id)
+    fetchOneLeaguesMatches(id).then(data => {
+
+      if (id === 524) {
+        this.props.handlePremierLeague(data.api.fixtures)
+      } else if (id === 525) {
+        this.props.handleLeague1(data.api.fixtures)
+      } else if (id === 530) {
+        this.props.handleChampionsLeague(data.api.fixtures)
+      } else if (id === 754) {
+        this.props.handleBundesliga1(data.api.fixtures)
+      } else {
+        this.props.handlePrimeraDivision(data.api.fixtures)
+      }
+      
+    })
   }
   
 
   render() {
-    const league = this.props.leaguesData.map(league => {
+    const league = this.props.leaguesData.map((league, i) => {
+      const logo = i === 0 ? ballIcon : league.logo
       return (
-        <div className="league-tab" key={league.league_id}>
-          <h4 className="league-tab-name">{league.name}</h4>
-          <img src={league.logo} alt="league logo" className="league-tab-logo" />
+        <div onClick={this.changeOneLeaguesMatches} className="league-tab" key={league.league_id}>
+          <button className="league-btn" id={league.league_id}></button>
+          <div className="league-tab-inner-container">
+            <img src={logo} alt="league logo" className="league-tab-logo" />
+            <h4 className="league-tab-name">{league.name}</h4>
+          </div>
         </div>
       )
     })
@@ -45,13 +64,21 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  leagueMatches: state.leagueMatches,
-  leaguesData: state.leaguesData
+  leaguesData: state.leaguesData,
+  premierLeague: state.premierLeague,
+  league1: state.league1,
+  championsLeague: state.championsLeague,
+  bundesliga1: state.bundesliga1,
+  primeraDivision: state.primeraDivision
 })
 
 const mapDispatchToProps = dispatch => ({
   handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
-  handleSetOneLeagueMatches: data => dispatch(setOneLeagueMatches(data))
+  handlePremierLeague: data => dispatch(setPremierLeague(data)),
+  handleLeague1: data => dispatch(setLeague1(data)),
+  handleChampionsLeague: data => dispatch(setChampionsLeague(data)),
+  handleBundesliga1: data => dispatch(setBundesliga1(data)),
+  handlePrimeraDivision: data => dispatch(setPrimeraDivision(data))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Header)

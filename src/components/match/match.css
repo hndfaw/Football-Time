@@ -14,7 +14,8 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  width: 100vw;
+  width: 97vw;
+  background: #fff;
 }
 
 .match-second-container {

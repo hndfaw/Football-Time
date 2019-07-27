@@ -1,4 +1,4 @@
-export const leaguesReducer = (state = [], action) => {
+export const leaguesReducer = (state = [{league_id: 10101010101010101, name: 'All Leagues'}], action) => {
   switch(action.type) {
     case 'SET_LEAGUES':
         const filteredLeagues = action.leaguesData.filter(league => {
@@ -21,7 +21,7 @@ export const leaguesReducer = (state = [], action) => {
           }
         })
 
-      return [...cleanLeagues, {league_id: 1313131313, name: 'All Leagues'}];
+      return [...state, ...cleanLeagues];
     default:
       return state;
   }

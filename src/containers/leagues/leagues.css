@@ -4,13 +4,15 @@
 
 .league-container {
   align-items: center;
-  background: rgb(233, 231, 231);
+  background: rgb(246, 246, 246);
   border-top: 1px solid rgb(107, 100, 100);
   border-bottom: 1px solid rgb(87, 78, 78);
   border: none;
   display: flex;
   height: 40px;
-  width: 100vw;
+  width: 97vw;
+  margin-left: auto;
+  margin-right: auto;
   position: sticky;
   top: 140px;
   z-index: 1;

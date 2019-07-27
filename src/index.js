@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootReducer } from './reducers';
+import { BrowserRouter } from 'react-router-dom';
+
 
 const store = createStore(
   rootReducer,
@@ -14,7 +16,9 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store} >
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>
 , document.getElementById('root')
 );
