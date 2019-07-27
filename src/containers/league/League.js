@@ -38,10 +38,8 @@ class League extends Component {
       } else if (id === 530) {
         this.props.handleChampionsLeague(cleanedData)
       } else if (id === 754) {
-        this.props.handleSelectedLeague('bundesliga1')
         this.props.handleBundesliga1(cleanedData)
       } else {
-        this.props.handleSelectedLeague('primeraDivision')
         this.props.handlePrimeraDivision(cleanedData)
       }
     })
@@ -105,8 +103,8 @@ const mapStateToProps = state => ({
   league524: state.league524,
   league525: state.league525,
   league530: state.league530,
-  bundesliga1: state.bundesliga1,
-  primeraDivision: state.primeraDivision,
+  league754: state.league754,
+  league775: state.league775,
   selectedLeague: state.selectedLeague
 })
 

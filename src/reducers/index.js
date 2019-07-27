@@ -15,7 +15,7 @@ export const rootReducer = combineReducers({
   league524: premierLeagueReducer,
   league525: league1Reducer,
   league530: championsLeagueReducer,
-  bundesliga1: bundesliga1Reducer,
-  primeraDivision: primeraDivisionReducer,
+  league754: bundesliga1Reducer,
+  league775: primeraDivisionReducer,
   selectedLeague: selectedLeagueReducer
 })
