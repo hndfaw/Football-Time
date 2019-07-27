@@ -5,6 +5,7 @@ import { primeraDivisionReducer } from './primeraDivisionReducer';
 import { selectedLeagueReducer } from './selectedLeagueReducer';
 import { league1Reducer } from './league1Reducer';
 import { bundesliga1Reducer } from './bundesliga1Reducer';
+import { championsLeagueReducer } from './championsLeagueReducer';
 
 describe('Reducers', () => {
 
@@ -140,6 +141,24 @@ describe('Reducers', () => {
         matches: [{match: 'match'}]
       }
       const result = bundesliga1Reducer([], expectedAction)
+      expect(result).toEqual(expected)
+    })
+  })
+
+  describe('championsLeagueReducer', () => {
+    it('should return the initial state', () => {
+      const expected = [];
+      const result = championsLeagueReducer(undefined, {})
+      expect(result).toEqual(expected)
+    })
+
+    it('should return a an array of league 1 matches', () => {
+      const expected = [{match: 'match'}]
+      const expectedAction = {
+        type: 'SET_CHAMPIONS_LEAGUE',
+        matches: [{match: 'match'}]
+      }
+      const result = championsLeagueReducer([], expectedAction)
       expect(result).toEqual(expected)
     })
   })

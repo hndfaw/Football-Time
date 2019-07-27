@@ -7,7 +7,7 @@ import { setTodaysMatches } from '../../actions';
 
 
 
-class Leagues extends Component {
+export class Leagues extends Component {
 
   changeTodaysDate = e => {
     fetchTodaysMatches(e.target.value).then(data => this.props.handleTodaysMatches(data.api.fixtures))
@@ -16,6 +16,7 @@ class Leagues extends Component {
 
   render() {
     const {todaysMatches, leaguesData} = this.props;
+    console.log(this.props)
     const filteredLeagus = [];
     todaysMatches.forEach(match => {
         leaguesData.forEach(league => {
@@ -43,18 +44,17 @@ class Leagues extends Component {
               <input type="date" onChange={this.changeTodaysDate}/>
         </div>
         {league} 
-        leaguess....
       </main>
     )
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   leaguesData: state.leaguesData,
   todaysMatches: state.todaysMatches
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
 })
 

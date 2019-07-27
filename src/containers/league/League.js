@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-// import ballIcon from '../../images/ball-icon.png';
 import {connect} from 'react-redux';
 import './league.css';
 import { fetchOneLeaguesMatches } from '../../apiCalls';
 import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
 
 
-class League extends Component {
+export class League extends Component {
 
   cleanMatches = data => {
     const cleanedData = data.map(match => {
@@ -77,7 +76,8 @@ class League extends Component {
   }
 
   render() {
-    const leagueTab = this.props.leaguesData.map((league, i) => {
+    const leagueTab = this.props.leaguesData.map(league => {
+
       return (
         <div onClick={this.changeOneLeaguesMatches} className="league-tab" key={league.league_id}>
           <button className="league-btn" id={league.league_id}></button>
@@ -103,7 +103,7 @@ class League extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   leaguesData: state.leaguesData,
   league524: state.league524,
   league525: state.league525,
@@ -113,7 +113,7 @@ const mapStateToProps = state => ({
   selectedLeague: state.selectedLeague
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
   handlePremierLeague: data => dispatch(setPremierLeague(data)),
   handleLeague1: data => dispatch(setLeague1(data)),

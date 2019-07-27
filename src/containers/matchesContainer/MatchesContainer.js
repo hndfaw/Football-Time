@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Match from '../../components/match/Match'
 
-class MatchContainer extends Component {
+export class MatchContainer extends Component {
   
   render() {
     const {id, todaysMatches} = this.props
     const filterMatchesPerLeague = todaysMatches.filter(match => 
-      match.league_id === id
+       match.league_id === id
     )
+
     const match = filterMatchesPerLeague.map((match, i) => {
       return (
         <Match key={match.fixture_id} match={match}/>
@@ -22,7 +23,7 @@ class MatchContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   todaysMatches: state.todaysMatches,
 })
 
