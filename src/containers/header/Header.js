@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import logo from '../../images/football-time-logo-4.png';
 import './header.css';
+// import { setTodaysMatches } from '../../actions';
 import { NavLink } from 'react-router-dom';
 
 

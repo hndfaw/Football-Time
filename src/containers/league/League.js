@@ -6,39 +6,73 @@ import { fetchOneLeaguesMatches } from '../../apiCalls';
 import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
 
 
-
-
 class League extends Component {
+
+  cleanMatches = data => {
+    const cleanedData = data.map(match => {
+      const date = match.event_date.split("").slice(0, 10).join("")
+        return {
+          event_date: date,
+          league_id: match.league_id,
+          statusShort: match.statusShort,
+          fixture_id: match.fixture_id,
+          homeTeamName: match.homeTeam.team_name,
+          homeTeamLogo: match.homeTeam.logo,
+          awayTeamName: match.awayTeam.team_name,
+          awayTeamLogo: match.awayTeam.logo
+        }
+      })
+      return cleanedData;
+  }
 
   changeOneLeaguesMatches = e => {
     let id = parseInt(e.target.id)
-    
 
     fetchOneLeaguesMatches(id).then(data => {
+      const cleanedData = this.cleanMatches(data.api.fixtures)
+
       if (id === 524) {
         this.props.handleSelectedLeague('premierLeague')
-        this.props.handlePremierLeague(data.api.fixtures)
+        this.props.handlePremierLeague(cleanedData)
       } else if (id === 525) {
         this.props.handleSelectedLeague('league1')
-        this.props.handleLeague1(data.api.fixtures)
+        this.props.handleLeague1(cleanedData)
       } else if (id === 530) {
         this.props.handleSelectedLeague('championsLeague')
-        this.props.handleChampionsLeague(data.api.fixtures)
+        this.props.handleChampionsLeague(cleanedData)
       } else if (id === 754) {
         this.props.handleSelectedLeague('bundesliga1')
-        this.props.handleBundesliga1(data.api.fixtures)
+        this.props.handleBundesliga1(cleanedData)
       } else {
         this.props.handleSelectedLeague('primeraDivision')
-        this.props.handlePrimeraDivision(data.api.fixtures)
+        this.props.handlePrimeraDivision(cleanedData)
       }
     })
     .then(() => this.selectLeaguesData());
-
   }
 
   selectLeaguesData = () => {
-    const data = this.props[this.props.selectedLeague].map(match => 
-      console.log(match)
+    return this.props[this.props.selectedLeague].map(match => {
+        return (
+        <section className="match-container" key={match.fixture_id}>
+      <div className="match-second-container">
+      <p className="team-name home-team-name">{match.homeTeamName}</p>
+      <div className="logos-result-container">
+        <div className="home-team-logo-container">
+          <img src={match.homeTeamLogo} alt="home team logo" className="small-logo" />
+        </div >
+        <h4 className="results">{match.goalsHomeTeam}<span> - </span>{match.goalsAwayTeam}</h4>
+        <div className="away-team-logo-container">
+          <img src={match.awayTeamLogo} alt="away team logo" className="small-logo" />
+        </div>
+      </div>
+      <p className="team-name away-team-name">{match.awayTeamName}</p>
+      </div>
+      {(match.statusShort !== 'MF' && match.statusShort !== 'NS' && match.statusShort !== 'TBD') ? <div className="match-status">
+        <p className="status-content">{match.elapsed}'</p>
+      </div> : <p className="date">{match.event_date}</p>}
+    </section>
+      )}
     )
   }
 
@@ -62,7 +96,7 @@ class League extends Component {
           {leagueTab}
         </section>
         <section>
-
+          {this.selectLeaguesData()}
         </section>
       </main>
     )

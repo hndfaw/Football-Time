@@ -12,7 +12,6 @@ export const todaysMatchesReducer = (state = [], action) => {
             homeTeamLogo: match.homeTeam.logo,
             awayTeamName: match.awayTeam.team_name,
             awayTeamLogo: match.awayTeam.logo
-
           }
         })
       return cleanedData

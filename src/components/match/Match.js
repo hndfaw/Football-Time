@@ -5,7 +5,6 @@ import './match.css';
   
   render() {
     const {match} = this.props
-    // const date = match.event_date.split("").slice(0, 10)
   
   return (
     <section className="match-container">
