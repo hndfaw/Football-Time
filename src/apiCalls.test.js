@@ -1,13 +1,11 @@
-import { fetchLeagues } from './apiCalls';
+import { fetchLeagues, fetchTodaysMatches } from './apiCalls';
 
 
 
 describe('apiCalls', () => {
 
   describe('fetchLeagues', () => {
-
   let mockLeague
-
   beforeEach( () => {
 
     mockLeague = [{
@@ -26,24 +24,11 @@ describe('apiCalls', () => {
 
      window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve( {
-        // ok: true,
+        ok: true,
         json: () => Promise.resolve(mockLeague)
       })
     })
   });
-
-  // it('should be called with correct data', () => {
-  //   const expected = [
-  //     'https://api-football-v1.p.rapidapi.com/v2/leagues',
-  //     { method: 'GET', headers: {
-  //       "X-RapidAPI-Host" : "api-football-v1.p.rapidapi.com",
-  //       "X-RapidAPI-Key" : "e766c3e8damshc0c6531779b6d33p1f1ae8jsnc3322faa6a3f" }, body: JSON.stringify(mockLeague) }
-  //   ];
-
-  //   fetchLeagues();
-
-  //   expect(window.fetch).toHaveBeenCalledWith(...expected);
-  // });
 
 
   it('fetchLeagues should return a parsed response if status is ok', async () =>{
@@ -52,17 +37,48 @@ describe('apiCalls', () => {
     expect(result).toEqual(mockLeague)
   })
 
-  // it.skip('fetchFilms should return error if status is not ok', async () => {
-  //   window.fetch = jest.fn().mockImplementationOnce(() => {
-  //     return Promise.resolve( {
-  //       ok: false,
-  //     })
-  //   })
-  //   await expect(fetchFilms()).rejects.toEqual(Error('Error fetching films'))
-  // })
+  it('fetchFilms should return error if status is not ok', async () => {
+    window.fetch = jest.fn().mockImplementationOnce(() => {
+      return Promise.resolve( {
+        ok: false,
+      })
+    })
+    await expect(fetchLeagues()).rejects.toEqual(Error('Error fetching leagues'))
+  })
 
   })
 
-
+  describe('fetchTodaysMatches', () => {
+    let mockMatch
+    beforeEach( () => {
+  
+      mockMatch = [{
+        'statusShort': "PST",
+      }];
+  
+       window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve( {
+          ok: true,
+          json: () => Promise.resolve(mockMatch)
+        })
+      })
+    });
+  
+    it('fetchLeagues should return a parsed response if status is ok', async () =>{
+      const result = await fetchTodaysMatches();
+      fetchTodaysMatches()
+      expect(result).toEqual(mockMatch)
+    })
+  
+    it('fetchFilms should return error if status is not ok', async () => {
+      window.fetch = jest.fn().mockImplementationOnce(() => {
+        return Promise.resolve( {
+          ok: false,
+        })
+      })
+      await expect(fetchTodaysMatches()).rejects.toEqual(Error('Error fetching todays matches'))
+    })
+  
+    })
 
 })

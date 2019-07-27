@@ -2,34 +2,56 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import logo from '../../images/football-time-logo-3.png';
 import './header.css';
-import { setTodaysDate, setTodaysMatches } from '../../actions';
-import { fetchTodaysMatches } from '../../apiCalls';
-
+import { setTodaysMatches, setOneLeagueMatches } from '../../actions';
+import { fetchTodaysMatches, fetchOneLeaguesMatches } from '../../apiCalls';
 
 
 class Header extends Component {
-
-  addDate = e => {
-    this.props.handleAddDate(e.target.value)
+  
+  changeTodaysDate = e => {
     fetchTodaysMatches(e.target.value).then(data => this.props.handleTodaysMatches(data.api.fixtures))
   }
 
+  chaneOneLeaguesMatches = () => {
+    fetchOneLeaguesMatches(524).fetch(data => console.log(data))
+    this.props.handleSetOneLeagueMatches()
+  }
+  
 
   render() {
+    const league = this.props.leaguesData.map(league => {
+      return (
+        <div className="league-tab" key={league.league_id}>
+          <h4 className="league-tab-name">{league.name}</h4>
+          <img src={league.logo} alt="league logo" className="league-tab-logo" />
+        </div>
+      )
+    })
+
     return (
       <header>
-        <img className="logo" src={logo} alt="football timelogo" />
+        <img className="logo" src={logo} alt="football time logo" />
         <section className="header-tabs-container">
-            <input type="date" onChange={this.addDate}/>
+            <div className="league-tabs-container">
+               {league}
+            </div>
+            <div>
+              <input type="date" onChange={this.changeTodaysDate}/>
+            </div>
         </section>
       </header>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  handleAddDate: date => dispatch(setTodaysDate(date)),
-  handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
+const mapStateToProps = state => ({
+  leagueMatches: state.leagueMatches,
+  leaguesData: state.leaguesData
 })
 
-export default connect(null,mapDispatchToProps)(Header)
+const mapDispatchToProps = dispatch => ({
+  handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
+  handleSetOneLeagueMatches: data => dispatch(setOneLeagueMatches(data))
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(Header)

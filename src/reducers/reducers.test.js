@@ -1,6 +1,6 @@
 import { leaguesReducer } from './leaguesReducer';
 import { todaysMatchesReducer } from './todaysMatchesReducer';
-import { todaysDateReducer } from './todaysDateReducer';
+import { todaysDateReducer, today } from './todaysDateReducer';
 
 describe('Reducers', () => {
 
@@ -51,21 +51,7 @@ describe('Reducers', () => {
 
   describe('todaysDateReducer', () => {
     it('should return the initial state', () => {
-      const generateDateToday = () => {
-        let today = new Date();
-        let dd = today.getDate();
-        let mm = today.getMonth() + 1;
-        let yyyy = today.getFullYear();
-        if (dd < 10) {
-          dd = '0' + dd;
-        }
-        if (mm < 10) {
-          mm = '0' + mm;
-        }
-        return (yyyy + '-' + mm + '-' + dd);
-      }
-
-      const expected = generateDateToday();
+      const expected = today();
       const result = todaysDateReducer(undefined, {})
       expect(result).toEqual(expected)
     })

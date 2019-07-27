@@ -21,7 +21,7 @@ export const leaguesReducer = (state = [], action) => {
           }
         })
 
-      return cleanLeagues;
+      return [...cleanLeagues, {league_id: 1313131313, name: 'All Leagues'}];
     default:
       return state;
   }

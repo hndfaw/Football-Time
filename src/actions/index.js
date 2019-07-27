@@ -8,7 +8,8 @@ export const setTodaysMatches = todayMatchesDate => ({
   todayMatchesDate
 })
 
-export const setTodaysDate = date => ({
-  type: 'SET_TODAYS_DATE',
-  date
+export const setOneLeagueMatches = (leagueId, matches) => ({
+  type: 'SET_ONE_LEAGUE_MATCHES',
+  leagueId,
+  matches
 })

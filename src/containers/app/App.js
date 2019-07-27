@@ -8,13 +8,31 @@ import  Leagues  from '../leagues/Leagues';
 
 export class App extends Component {
 
+   today = () => {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+    let yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = '0' + dd;
+    }
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+    return (yyyy + '-' + mm + '-' + dd);
+  }
+
   componentDidMount() {
-    const date = this.props.oneDayDate
-    fetchTodaysMatches(date).then(data =>
+
+    fetchTodaysMatches(this.today()).then(data =>
       this.props.handleTodaysMatches(data.api.fixtures))
 
     fetchLeagues().then(data =>
       this.props.handleLeagues(data.api.leagues))
+
+    // fetchOneLeaguesMatches(525).then(data =>
+    //   this.props.handLesetOneLeagueMatches(data)
+    // )
   }
 
   render() {
@@ -33,8 +51,7 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
   handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
-  handleLeagues: data => dispatch(leaguesAction(data))
-
+  handleLeagues: data => dispatch(leaguesAction(data)),
 })
 
 

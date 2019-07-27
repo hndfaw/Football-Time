@@ -7,18 +7,38 @@ header {
   top: 0;
   left: 0;
   height: 140px;
-  background: #fff;
+  background: rgb(235, 231, 231);
   z-index: 2;
 }
 
 .logo {
   height: 100px;
-  position: absolute;
-  left: 20px;
 }
 
 .header-tabs-container {
-  background: rgb(78, 72, 72);
-  height: 100px;
+  background: #fff;
+  height: 71%;
   width: 100%;
+}
+
+.league-tabs-container {
+  display: flex;
+  width: 100%;
+}
+
+.league-tab {
+  height: 40px;
+  widtH: 200px;
+  display: flex;
+  border: 1px solid black;
+}
+
+.league-tab-name {
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.league-tab-logo {
+  height: 90%;
+  width: auto;
 }
