@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match the snopshot 1`] = `
+<header>
+  <img
+    alt="football time logo"
+    className="logo"
+    src="football-time-logo-4.png"
+  />
+  <section
+    className="header-tabs-container"
+  >
+    <NavLink
+      to="/"
+    >
+      All Leagues
+    </NavLink>
+    <NavLink
+      to="/league"
+    >
+      One League
+    </NavLink>
+  </section>
+</header>
+`;

@@ -1,6 +1,6 @@
-import React from 'react';
-import {League, mapDispatchToProps} from './League';
-import { shallow } from 'enzyme';
+// import React from 'react';
+import {mapDispatchToProps} from './League';
+// import { shallow } from 'enzyme';
 import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
 
 describe('League', () => {

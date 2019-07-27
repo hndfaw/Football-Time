@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import logo from '../../images/football-time-logo-4.png';
 import './header.css';
-// import { setTodaysMatches } from '../../actions';
 import { NavLink } from 'react-router-dom';
 
 
-class Header extends Component {
+export class Header extends Component {
   
 
   render() {
@@ -29,7 +28,7 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   leaguesData: state.leaguesData,
 })
 
