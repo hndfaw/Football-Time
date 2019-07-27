@@ -7,6 +7,7 @@ import  Header  from '../header/Header';
 import  Leagues  from '../leagues/Leagues';
 import { Route, Switch } from 'react-router-dom';
 import League from '../../containers/league/League';
+import background from '../../images/background-5.jpeg'
 
 
 export class App extends Component {
@@ -39,6 +40,8 @@ export class App extends Component {
     return (
       <div className="App">
           <Header />
+          <div className="color-background"></div>
+          <img className="img-background" src={background} alt="stadium" />
           <Switch>
             <Route exact path="/" render={() => (<Leagues />)} />
             <Route exact path="/league" render={() => (
