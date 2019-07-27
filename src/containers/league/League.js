@@ -7,6 +7,7 @@ import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, set
 
 
 
+
 class League extends Component {
 
   changeOneLeaguesMatches = e => {
@@ -25,6 +26,14 @@ class League extends Component {
         this.props.handlePrimeraDivision(data.api.fixtures)
       }
     })
+    .then(() => this.selectLeaguesData());
+    
+  }
+
+  selectLeaguesData = () => {
+    const data = this.props[this.props.selectedLeague].map(match => 
+      console.log(match)
+    )
   }
 
   render() {
@@ -39,6 +48,10 @@ class League extends Component {
         </div>
       )
     })
+
+   
+
+
     return (
       <main className="main">
         <section className="league-tabs-container">
