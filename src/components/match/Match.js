@@ -10,17 +10,17 @@ import './match.css';
   return (
     <section className="match-container">
       <div className="match-second-container">
-      <p className="team-name home-team-name">{match.homeTeam.team_name}</p>
+      <p className="team-name home-team-name">{match.homeTeamName}</p>
       <div className="logos-result-container">
         <div className="home-team-logo-container">
-          <img src={match.homeTeam.logo} alt="home team logo" className="small-logo" />
+          <img src={match.homeTeamLogo} alt="home team logo" className="small-logo" />
         </div >
         <h4 className="results">{match.goalsHomeTeam}<span> - </span>{match.goalsAwayTeam}</h4>
         <div className="away-team-logo-container">
-          <img src={match.awayTeam.logo} alt="away team logo" className="small-logo" />
+          <img src={match.awayTeamLogo} alt="away team logo" className="small-logo" />
         </div>
       </div>
-      <p className="team-name away-team-name">{match.awayTeam.team_name}</p>
+      <p className="team-name away-team-name">{match.awayTeamName}</p>
       </div>
       {(match.statusShort !== 'MF' && match.statusShort !== 'NS' && match.statusShort !== 'TBD') ? <div className="match-status">
         <p className="status-content">{match.elapsed}'</p>

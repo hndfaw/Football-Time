@@ -6,10 +6,13 @@ export const todaysMatchesReducer = (state = [], action) => {
           return {
             event_date: date,
             league_id: match.league_id,
-            homeTeam: match.homeTeam,
-            awayTeam: match.awayTeam,
             statusShort: match.statusShort,
-            fixture_id: match.fixture_id
+            fixture_id: match.fixture_id,
+            homeTeamName: match.homeTeam.team_name,
+            homeTeamLogo: match.homeTeam.logo,
+            awayTeamName: match.awayTeam.team_name,
+            awayTeamLogo: match.awayTeam.logo
+
           }
         })
       return cleanedData

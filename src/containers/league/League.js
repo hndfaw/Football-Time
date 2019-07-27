@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './league.css';
 import { fetchOneLeaguesMatches } from '../../apiCalls';
-import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision } from '../../actions';
+import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
 
 
 
@@ -12,22 +12,28 @@ class League extends Component {
 
   changeOneLeaguesMatches = e => {
     let id = parseInt(e.target.id)
-    fetchOneLeaguesMatches(id).then(data => {
+    
 
+    fetchOneLeaguesMatches(id).then(data => {
       if (id === 524) {
+        this.props.handleSelectedLeague('premierLeague')
         this.props.handlePremierLeague(data.api.fixtures)
       } else if (id === 525) {
+        this.props.handleSelectedLeague('league1')
         this.props.handleLeague1(data.api.fixtures)
       } else if (id === 530) {
+        this.props.handleSelectedLeague('championsLeague')
         this.props.handleChampionsLeague(data.api.fixtures)
       } else if (id === 754) {
+        this.props.handleSelectedLeague('bundesliga1')
         this.props.handleBundesliga1(data.api.fixtures)
       } else {
+        this.props.handleSelectedLeague('primeraDivision')
         this.props.handlePrimeraDivision(data.api.fixtures)
       }
     })
     .then(() => this.selectLeaguesData());
-    
+
   }
 
   selectLeaguesData = () => {
@@ -50,8 +56,6 @@ class League extends Component {
     })
 
    
-
-
     return (
       <main className="main">
         <section className="league-tabs-container">
@@ -81,7 +85,8 @@ const mapDispatchToProps = dispatch => ({
   handleLeague1: data => dispatch(setLeague1(data)),
   handleChampionsLeague: data => dispatch(setChampionsLeague(data)),
   handleBundesliga1: data => dispatch(setBundesliga1(data)),
-  handlePrimeraDivision: data => dispatch(setPrimeraDivision(data))
+  handlePrimeraDivision: data => dispatch(setPrimeraDivision(data)),
+  handleSelectedLeague: leagueName => dispatch(setSelectedLeague(leagueName))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(League)
