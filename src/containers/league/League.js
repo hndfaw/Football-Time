@@ -27,10 +27,12 @@ class League extends Component {
 
   changeOneLeaguesMatches = e => {
     let id = parseInt(e.target.id)
+    this.props.handleSelectedLeague(`league${id}`)
+
+    this.props[`league${id}`].length === 0 ?
 
     fetchOneLeaguesMatches(id).then(data => {
       const cleanedData = this.cleanMatches(data.api.fixtures)
-      this.props.handleSelectedLeague(`league${id}`)
       if (id === 524) {
         this.props.handlePremierLeague(cleanedData)
       } else if (id === 525) {
@@ -43,7 +45,10 @@ class League extends Component {
         this.props.handlePrimeraDivision(cleanedData)
       }
     })
-    .then(() => this.selectLeaguesData());
+    .then(() => this.selectLeaguesData())
+
+    : this.selectLeaguesData()
+
   }
 
   selectLeaguesData = () => {
