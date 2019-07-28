@@ -7,35 +7,9 @@ exports[`Leagues should match the snopshot 1`] = `
   <section
     className="league-tabs-container"
   >
-    <div
-      className="league-tab"
-      key="524"
-    >
-      <button
-        className="league-btn"
-        id={524}
-        onClick={[Function]}
-        style={
-          Object {
-            "background": "rgba(0,0,0,0.1)",
-          }
-        }
-      />
-      <div
-        className="league-tab-inner-container"
-      >
-        <img
-          alt="league logo"
-          className="league-tab-logo"
-          src="https://www.api-football.com/public/leagues/2.png"
-        />
-        <h4
-          className="league-tab-name"
-        >
-          Premier League
-        </h4>
-      </div>
-    </div>
+    <Connect(LeaguesTabs)
+      changeOneLeaguesMatches={[Function]}
+    />
   </section>
   <section
     className="match-container"

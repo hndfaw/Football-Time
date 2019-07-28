@@ -3,7 +3,7 @@ import './leaguesTabs.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-class LeaguesTabs extends Component {
+export class LeaguesTabs extends Component {
 
   leagueTab = () => {
     const {selectedLeague, leaguesData } = this.props;

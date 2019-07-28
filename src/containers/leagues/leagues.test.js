@@ -7,13 +7,7 @@ describe('Leagues', () => {
 
   let wrapper;
   beforeEach(() => {
-    const mockLeagues = [
-      {
-        league_id: 524,
-        logo: "https://www.api-football.com/public/leagues/2.png",
-        name: "Premier League"
-      }
-    ]
+
 
     const mockMatch = [
       {
@@ -31,7 +25,7 @@ describe('Leagues', () => {
         statusShort: "NS"
       }
     ]
-    wrapper = shallow(<Leagues selectedLeague="league524" leaguesData={mockLeagues} league524={mockMatch} id={{league_id: 524}} />);
+    wrapper = shallow(<Leagues selectedLeague="league524" league524={mockMatch} id={{league_id: 524}} />);
   })
 
   it('should match the snopshot', () => {
