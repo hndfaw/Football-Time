@@ -32,7 +32,7 @@
 .img-background {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -10;
@@ -41,10 +41,30 @@
 .color-background {
   width: 100vw;
   height: 100vh;
-  /* background: rgba(175, 166, 166, 0.685); */
   background-image: linear-gradient(rgb(255, 255, 255), rgba(161, 148, 148, 0.514));
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -9;
+}
+
+.page-not-exist {
+  margin-top: 35%;
+  font-size: 18px;
+  color: #000;
+  padding-bottom: 20px;
+}
+
+.back-to-homepage {
+  color: gray;
+  font-size: 16px;
+  border: 1px solid gray;
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 3px 7px;
+}
+
+.back-to-homepage:hover {
+  background: rgb(245, 243, 243);
+  color: rgb(119, 118, 118);
 }

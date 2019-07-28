@@ -7,22 +7,67 @@ header {
   top: 0;
   left: 0;
   z-index: 2;
-  margin-top: 10px;
-  background: rgb(238, 233, 233);
+  background: rgb(255, 255, 255);
+  height: 53px;
 }
 
 .logo {
   height: 38px;
-  margin-left: 13px;
 }
 
 
-.league-tabs-container {
+.header-tabs-container {
   display: flex;
   width: 100%;
-  /* border: 1px solid blue; */
-  height: 60%
+  background: rgb(42, 47, 57);
+  height: 38px;
+  align-items: center;
+  justify-content: flex-end
 }
+
+.nav-btn-container {
+  /* border: 1px solid #fff; */
+  height: 60%;
+  margin-right: 15px;
+  width: 255px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.all-leagues-tab,
+.one-league-tab {
+  color: rgba(255, 255, 255, 0.445);
+  font-size: 13px;
+  text-decoration: none;
+  border: 1px solid white;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.all-leagues-tab:hover,
+.one-league-tab:hover {
+  color: #fff;
+}
+
+.one-league-tab {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.all-leagues-tab {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-right: none;
+}
+
+
+.active {
+  color: #fff;
+}
+
 
 .league-tab {
   height: 100%;

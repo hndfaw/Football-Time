@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './leagues.css';
+import './todaysMatches.css';
 import MatchContainer from '../matchesContainer/MatchesContainer';
 import { fetchTodaysMatches } from '../../apiCalls';
 import { setTodaysMatches } from '../../actions';
@@ -16,7 +16,7 @@ export class Leagues extends Component {
 
   render() {
     const {todaysMatches, leaguesData} = this.props;
-    console.log(this.props)
+
     const filteredLeagus = [];
     todaysMatches.forEach(match => {
         leaguesData.forEach(league => {
@@ -25,7 +25,6 @@ export class Leagues extends Component {
     })
     
     const league = filteredLeagus.map(league => {
-
       return (
         <section key={league.league_id} id={league.league_id}>
         <div className="league-container">
@@ -38,6 +37,7 @@ export class Leagues extends Component {
         </section>
       )
     })
+    
     return (
       <main className="main">
         <div>

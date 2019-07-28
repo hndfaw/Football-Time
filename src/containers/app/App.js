@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import { fetchTodaysMatches, fetchLeagues } from '../../apiCalls';
 import { setTodaysMatches, leaguesAction } from '../../actions';
 import  Header  from '../header/Header';
-import  Leagues  from '../leagues/Leagues';
-import { Route, Switch } from 'react-router-dom';
+import  TodaysMatches  from '../todaysMatches/TodaysMatches';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import League from '../../containers/league/League';
-import background from '../../images/background-5.jpeg'
+import Home from '../../components/home/Home'
+
 
 
 export class App extends Component {
@@ -40,17 +41,14 @@ export class App extends Component {
     return (
       <div className="App">
           <Header />
-          <div className="color-background"></div>
-          <img className="img-background" src={background} alt="stadium" />
           <Switch>
-            <Route exact path="/" render={() => (<Leagues />)} />
-            <Route exact path="/league" render={() => (
-              <>
-                <League />
-              </>
-            )} />
+            <Route exact path="/" render={() => (<Home />)} />
+            <Route exact path="/todaysmatches" render={() => (<TodaysMatches />)} />
+            <Route exact path="/leagues" render={() => (<League/>)} />
             <Route render={() => (
-              <h1>THE PAGE YOU TRIED TO ACCESS DOES NOT EXIST!</h1>
+              <>
+                <p className="page-not-exist">The page you’re looking for can’t be found.</p><NavLink to="/" className="back-to-homepage"> Back to Homepage</NavLink>
+              </>
             )}/>
           </Switch>
       </div>

@@ -6,8 +6,11 @@
 .league-tabs-container {
   display: flex;
   width: 100%;
-  border-bottom: 1px solid gray;
   height: 60px;
+  position: sticky;
+  top: 60px;
+  background: lightgray;
+  z-index: 2;
 }
 
 .league-tab {

@@ -1,10 +1,8 @@
-.main {
-  margin-top: 60px;
-}
+
 
 .league-container {
   align-items: center;
-  background: rgb(246, 246, 246);
+  background: lightgray;
   border-top: 1px solid rgb(107, 100, 100);
   border-bottom: 1px solid rgb(87, 78, 78);
   border: none;
