@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Leagues should match the snopshot 1`] = `
+<main
+  className="main"
+>
+  <section
+    className="league-tabs-container"
+  >
+    <div
+      className="league-tab"
+      key="524"
+      onClick={[Function]}
+    >
+      <button
+        className="league-btn"
+        id={524}
+        style={
+          Object {
+            "background": "rgba(0,0,0,0.1)",
+          }
+        }
+      />
+      <div
+        className="league-tab-inner-container"
+      >
+        <img
+          alt="league logo"
+          className="league-tab-logo"
+          src="https://www.api-football.com/public/leagues/2.png"
+        />
+        <h4
+          className="league-tab-name"
+        >
+          Premier League
+        </h4>
+      </div>
+    </div>
+  </section>
+  <section
+    className="match-container"
+    key="157015"
+  >
+    <div
+      className="match-second-container"
+    >
+      <p
+        className="team-name home-team-name"
+      >
+        Liverpool
+      </p>
+      <div
+        className="logos-result-container"
+      >
+        <div
+          className="home-team-logo-container"
+        >
+          <img
+            alt="home team logo"
+            className="small-logo"
+            src="https://www.api-football.com/public/teams/40.png"
+          />
+        </div>
+        <h4
+          className="results"
+        >
+          <span>
+             - 
+          </span>
+        </h4>
+        <div
+          className="away-team-logo-container"
+        >
+          <img
+            alt="away team logo"
+            className="small-logo"
+            src="https://www.api-football.com/public/teams/71.png"
+          />
+        </div>
+      </div>
+      <p
+        className="team-name away-team-name"
+      >
+        Norwich
+      </p>
+    </div>
+    <p
+      className="date"
+    >
+      2019-08-09
+    </p>
+    <p
+      className="match-status"
+    >
+      Not Started
+    </p>
+  </section>
+</main>
+`;

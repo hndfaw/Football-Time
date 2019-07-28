@@ -107,16 +107,20 @@ export class Leagues extends Component {
     return leagueTab
   }
 
+  dataLoading = () => {
+    const { selectedLeague } = this.props;
+    const  dataLoading = (this.props[selectedLeague].length) === 0;
+    return dataLoading
+  }
+
   render() {
-    const { selectedLeague } = this.props
-    const  dataLoading = (this.props[selectedLeague].length) === 0
     
     return (
       <main className="main">
         <section className="league-tabs-container">
           {this.leagueTab()}
         </section>
-           {dataLoading ?
+           {this.dataLoading() ?
           <img src={loading} className="loading" alt="loading icon" /> :
           this.selectLeaguesData()}
       </main>

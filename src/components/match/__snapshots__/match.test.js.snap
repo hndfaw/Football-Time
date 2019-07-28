@@ -41,14 +41,8 @@ exports[`Match should match the match snapshot 1`] = `
       className="team-name away-team-name"
     />
   </div>
-  <div
+  <p
     className="match-status"
-  >
-    <p
-      className="status-content"
-    >
-      '
-    </p>
-  </div>
+  />
 </section>
 `;

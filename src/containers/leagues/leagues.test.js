@@ -1,24 +1,39 @@
-// import React from 'react';
-import {mapDispatchToProps} from './Leagues';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import {Leagues, mapDispatchToProps} from './Leagues';
+import { shallow } from 'enzyme';
 import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
 
-describe('League', () => {
+describe('Leagues', () => {
 
-//   it('should match the snopshot', () => {
-//     const mockProp = {
-//       leaguesData: [{league_id: 524}],
-//       league524: [{}],
-//       league525: [{}],
-//       league530: [{}],
-//       league754: [{}],
-//       league775: [{}],
-//       selectedLeague: 'league524'
-//     }
-//     const x = [{league_id: 524}]
-//     const wrapper = shallow(<League leaguesData={x}/>);
-//     expect(wrapper).toMatchSnapshot()
-//   })
+  it('should match the snopshot', () => {
+    const mockLeagues = [
+      {
+        league_id: 524,
+        logo: "https://www.api-football.com/public/leagues/2.png",
+        name: "Premier League"
+      }
+    ]
+
+    const mockMatch = [
+      {
+        awayTeamLogo: "https://www.api-football.com/public/teams/71.png",
+        awayTeamName: "Norwich",
+        elapsed: 0,
+        event_date: "2019-08-09",
+        fixture_id: 157015,
+        goalsAwayTeam: null,
+        goalsHomeTeam: null,
+        homeTeamLogo: "https://www.api-football.com/public/teams/40.png",
+        homeTeamName: "Liverpool",
+        league_id: 524,
+        status: "Not Started",
+        statusShort: "NS"
+      }
+    ]
+
+    const wrapper = shallow(<Leagues selectedLeague="league524" leaguesData={mockLeagues} league524={mockMatch} />);
+    expect(wrapper).toMatchSnapshot()
+  })
 
 it('should dispatch with a setTodaysMatches action when handleTodaysMatches is called', () => {
   const mockDispatch = jest.fn();

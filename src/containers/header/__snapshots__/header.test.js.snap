@@ -5,21 +5,27 @@ exports[`Header should match the snopshot 1`] = `
   <img
     alt="football time logo"
     className="logo"
-    src="football-time-logo-4.png"
+    src="football-time-logo.png"
   />
   <section
     className="header-tabs-container"
   >
-    <NavLink
-      to="/"
+    <div
+      className="nav-btn-container"
     >
-      All Leagues
-    </NavLink>
-    <NavLink
-      to="/league"
-    >
-      One League
-    </NavLink>
+      <NavLink
+        className="all-leagues-tab"
+        to="/todaysmatches"
+      >
+        Today's Matches
+      </NavLink>
+      <NavLink
+        className="one-league-tab"
+        to="/leagues"
+      >
+        Leagues
+      </NavLink>
+    </div>
   </section>
 </header>
 `;

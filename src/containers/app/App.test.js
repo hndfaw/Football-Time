@@ -7,7 +7,7 @@ import { setTodaysMatches, leaguesAction } from '../../actions';
 
 describe('App', ()=> {
   it('should match the snapshot', ()=> {
-    let wrapper = shallow(<App onDayDate={{date: '2019-01-01'}}/>);
+    let wrapper = shallow(<App onDayDate={{date: '2019-01-01'}} todaysMatches={[{match: 'match'}]}/>);
     expect(wrapper).toMatchSnapshot();
   })
 

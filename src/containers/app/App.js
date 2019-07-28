@@ -30,14 +30,11 @@ export class App extends Component {
   }
 
   componentDidMount() {
-
     fetchTodaysMatches(this.today()).then(data =>
       this.props.handleTodaysMatches(data.api.fixtures))
 
     fetchLeagues().then(data =>
       this.props.handleLeagues(data.api.leagues))
-
-
   }
 
   render() {
