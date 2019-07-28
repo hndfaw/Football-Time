@@ -13,8 +13,7 @@ export class Leagues extends Component {
     fetchTodaysMatches(e.target.value).then(data => this.props.handleTodaysMatches(data.api.fixtures))
   }
 
-
-  render() {
+  filteredLeagus = () => {
     const {todaysMatches, leaguesData} = this.props;
 
     const filteredLeagus = [];
@@ -23,8 +22,16 @@ export class Leagues extends Component {
           if (league.league_id === match.league_id && !filteredLeagus.includes(league)) {filteredLeagus.push(league) }
         })
     })
-    
-    const league = filteredLeagus.map(league => {
+
+    return filteredLeagus
+  }
+
+  setNumOfLeagues = (num) => {
+    this.setState({numTodaysLeagues: num})
+  }
+
+  setMatches = () => {
+    const league = this.filteredLeagus().map(league => {
       return (
         <section key={league.league_id} id={league.league_id}>
         <div className="league-container">
@@ -37,13 +44,22 @@ export class Leagues extends Component {
         </section>
       )
     })
-    
+    return league
+  }
+
+  
+
+
+  render() {
+
+      const msg = this.setMatches().length !== 0 ? '' : <p className="msg">There are no matches the selected day, change the date to view another day's matches.</p>
     return (
       <main className="main">
         <div>
-              <input type="date" onChange={this.changeTodaysDate}/>
+           <input type="date" onChange={this.changeTodaysDate}/>
         </div>
-        {league} 
+        {msg}
+        {this.setMatches()} 
       </main>
     )
   }
