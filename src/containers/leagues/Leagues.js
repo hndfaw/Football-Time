@@ -7,6 +7,13 @@ import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, set
 
 export class League extends Component {
 
+  componentDidMount() {
+    fetchOneLeaguesMatches(524).then(data => {
+      const cleanedData = this.cleanMatches(data.api.fixtures)
+      this.props.handlePremierLeague(cleanedData)
+    })
+  }
+
   cleanMatches = data => {
     const cleanedData = data.map(match => {
       const date = match.event_date.split("").slice(0, 10).join("")
@@ -32,9 +39,7 @@ export class League extends Component {
 
     fetchOneLeaguesMatches(id).then(data => {
       const cleanedData = this.cleanMatches(data.api.fixtures)
-      if (id === 524) {
-        this.props.handlePremierLeague(cleanedData)
-      } else if (id === 525) {
+      if (id === 525) {
         this.props.handleLeague1(cleanedData)
       } else if (id === 530) {
         this.props.handleChampionsLeague(cleanedData)
@@ -45,9 +50,7 @@ export class League extends Component {
       }
     })
     .then(() => this.selectLeaguesData())
-
     : this.selectLeaguesData()
-
   }
 
   selectLeaguesData = () => {
@@ -76,10 +79,14 @@ export class League extends Component {
   }
 
   leagueTab = () => {
-    const leagueTab = this.props.leaguesData.map(league => {
+    const {selectedLeague, leaguesData } = this.props;
+    let selectedId = parseInt(selectedLeague.slice(6,9))
+    
+    const leagueTab = leaguesData.map(league => {
+      const btnStyle = (selectedId === league.league_id) ? {background: 'rgba(0,0,0,0.1)'} : null
       return (
         <div onClick={this.changeOneLeaguesMatches} className="league-tab" key={league.league_id}>
-          <button className="league-btn" id={league.league_id}></button>
+          <button style={btnStyle} className="league-btn" id={league.league_id}></button>
           <div className="league-tab-inner-container">
             <img src={league.logo} alt="league logo" className="league-tab-logo" />
             <h4 className="league-tab-name">{league.name}</h4>

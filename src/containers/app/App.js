@@ -35,6 +35,8 @@ export class App extends Component {
     fetchLeagues().then(data =>
       this.props.handleLeagues(data.api.leagues))
 
+   
+
   }
 
   render() {

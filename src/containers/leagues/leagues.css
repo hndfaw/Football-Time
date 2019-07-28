@@ -34,11 +34,10 @@
 }
 
 .league-btn:hover {
-  background: rgba(155, 126, 126, 0.13);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .league-tab-inner-container {
-  /* border: 1px solid red; */
   height: 100%;
   display: flex;
   align-items: center;
