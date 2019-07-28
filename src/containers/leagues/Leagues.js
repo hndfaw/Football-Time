@@ -112,7 +112,7 @@ export class League extends Component {
     
     return (
       dataLoading ?
-       <img src={loading} alt="loading icon" /> :
+       <img src={loading} className="loading" alt="loading icon" /> :
 
       <main className="main">
         <section className="league-tabs-container">

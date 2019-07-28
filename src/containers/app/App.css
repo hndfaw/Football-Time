@@ -68,3 +68,8 @@
   background: rgb(245, 243, 243);
   color: rgb(119, 118, 118);
 }
+
+.loading {
+  margin-top: 25%;
+  height: 100px;
+}

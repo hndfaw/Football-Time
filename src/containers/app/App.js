@@ -49,7 +49,7 @@ export class App extends Component {
             <Route exact path="/" render={() => (<Home />)} />
             <Route exact path="/todaysmatches" render={() => (
                 dataLoading ?
-                <img src={loading} alt="loading icon" /> :
+                <img src={loading} className="loading" alt="loading icon" /> :
                 <TodaysMatches />
             )} />
             <Route exact path="/leagues" render={() => (
