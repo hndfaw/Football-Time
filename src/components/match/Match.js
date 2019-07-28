@@ -26,6 +26,7 @@ import './match.css';
         <p className="status-content">{match.elapsed}'</p>
       </div> :
       <p className="date">{match.event_date}</p>}
+      <p className="match-status">{match.status}</p>
     </section>
   )
   }

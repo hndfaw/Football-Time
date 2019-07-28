@@ -19,7 +19,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* border: 1px solid black; */
   position: relative;
 }
 
@@ -48,7 +47,6 @@
   font-size: 14px;
   margin-left: 10px;
 }
-
 
 
 .league-tab-logo {

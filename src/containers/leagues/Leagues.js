@@ -16,6 +16,7 @@ export class League extends Component {
 
   cleanMatches = data => {
     const cleanedData = data.map(match => {
+
       const date = match.event_date.split("").slice(0, 10).join("")
         return {
           event_date: date,
@@ -28,7 +29,8 @@ export class League extends Component {
           awayTeamLogo: match.awayTeam.logo,
           elapsed: match.elapsed,
           goalsHomeTeam: match.goalsHomeTeam,
-          goalsAwayTeam: match.goalsAwayTeam
+          goalsAwayTeam: match.goalsAwayTeam,
+          status: match.status
         }
       })
       return cleanedData;
@@ -74,10 +76,11 @@ export class League extends Component {
       <p className="team-name away-team-name">{match.awayTeamName}</p>
       </div>
       {(match.statusShort === '1H' || match.statusShort === 'HT' || match.statusShort === '2H' || match.statusShort === 'ET' || match.statusShort === 'P' || match.statusShort === 'BT') ?
-      <div className="match-status">
-        <p className="status-content">{match.elapsed}'</p>
+      <div className="match-elapsed-container">
+        <p className="elapsed">{match.elapsed}'</p>
       </div> :
       <p className="date">{match.event_date}</p>}
+      <p className="match-status">{match.status}</p>
     </section>
       )}
     )

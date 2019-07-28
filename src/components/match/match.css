@@ -66,19 +66,27 @@
   font-weight: normal;
 }
 
-.match-status {
+.match-elapsed-container {
   height: 16px;
   width: 40px;
   border: 1px solid rgb(78, 202, 109);
   border-radius: 3px;
 }
 
-.status-content {
+.elapsed {
   font-size: 10px;
   color: green;
 }
 
 .date {
   color: gray;
+  font-size: 10px;
+}
+
+.match-status {
+  position: absolute;
+  color: gray;
+  right: 3px;
+  border: none;
   font-size: 10px;
 }
