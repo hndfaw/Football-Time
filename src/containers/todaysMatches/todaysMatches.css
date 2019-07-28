@@ -1,5 +1,3 @@
-
-
 .league-container {
   align-items: center;
   background: lightgray;
@@ -12,7 +10,7 @@
   margin-left: auto;
   margin-right: auto;
   position: sticky;
-  top: 60px;
+  top: 53px;
   z-index: 1;
 }
 
@@ -37,5 +35,5 @@
 }
 
 .msg {
-  margin-top: 35%;
+  margin-top: 25%;
 }

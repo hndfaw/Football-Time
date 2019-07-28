@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import './league.css';
+import './leagues.css';
 import { fetchOneLeaguesMatches } from '../../apiCalls';
 import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
 
@@ -75,9 +75,8 @@ export class League extends Component {
     )
   }
 
-  render() {
+  leagueTab = () => {
     const leagueTab = this.props.leaguesData.map(league => {
-
       return (
         <div onClick={this.changeOneLeaguesMatches} className="league-tab" key={league.league_id}>
           <button className="league-btn" id={league.league_id}></button>
@@ -88,12 +87,15 @@ export class League extends Component {
         </div>
       )
     })
+    return leagueTab
+  }
 
-   
+  render() {
+
     return (
       <main className="main">
         <section className="league-tabs-container">
-          {leagueTab}
+          {this.leagueTab()}
         </section>
         <section>
           {this.selectLeaguesData()}

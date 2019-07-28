@@ -1,5 +1,5 @@
 // import React from 'react';
-import {mapDispatchToProps} from './League';
+import {mapDispatchToProps} from './Leagues';
 // import { shallow } from 'enzyme';
 import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
 

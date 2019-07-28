@@ -6,7 +6,7 @@ import { setTodaysMatches, leaguesAction } from '../../actions';
 import  Header  from '../header/Header';
 import  TodaysMatches  from '../todaysMatches/TodaysMatches';
 import { Route, Switch, NavLink } from 'react-router-dom';
-import League from '../../containers/league/League';
+import Leagues from '../leagues/Leagues';
 import Home from '../../components/home/Home'
 
 
@@ -44,7 +44,7 @@ export class App extends Component {
           <Switch>
             <Route exact path="/" render={() => (<Home />)} />
             <Route exact path="/todaysmatches" render={() => (<TodaysMatches />)} />
-            <Route exact path="/leagues" render={() => (<League/>)} />
+            <Route exact path="/leagues" render={() => (<Leagues/>)} />
             <Route render={() => (
               <>
                 <p className="page-not-exist">The page you’re looking for can’t be found.</p><NavLink to="/" className="back-to-homepage"> Back to Homepage</NavLink>
