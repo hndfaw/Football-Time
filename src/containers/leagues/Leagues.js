@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import './leagues.css';
 import { fetchOneLeaguesMatches } from '../../apiCalls';
 import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
 import loading from '../../images/loading.gif'
 
 
-export class League extends Component {
+export class Leagues extends Component {
 
   componentDidMount() {
     fetchOneLeaguesMatches(524).then(data => {
@@ -123,6 +124,16 @@ export class League extends Component {
   }
 }
 
+Leagues.propTypes = {
+  leaguesData: PropTypes.array,
+  league525: PropTypes.array,
+  league524: PropTypes.array,
+  league530: PropTypes.array,
+  league754: PropTypes.array,
+  league775: PropTypes.array,
+  selectedLeague: PropTypes.string,
+}
+
 export const mapStateToProps = state => ({
   leaguesData: state.leaguesData,
   league524: state.league524,
@@ -143,4 +154,4 @@ export const mapDispatchToProps = dispatch => ({
   handleSelectedLeague: leagueName => dispatch(setSelectedLeague(leagueName))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(League)
+export default connect(mapStateToProps, mapDispatchToProps)(Leagues)

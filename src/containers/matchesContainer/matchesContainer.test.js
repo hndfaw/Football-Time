@@ -1,9 +1,9 @@
 import React from 'react';
-import { MatchContainer, mapStateToProps } from './MatchesContainer';
+import { MatchesContainer, mapStateToProps } from './MatchesContainer';
 import { shallow } from 'enzyme';
 
 
-describe('MatchContainer', () => {
+describe('MatchesContainer', () => {
 
   it('should match the snapshot', () => {
     let mockMatch = [{
@@ -16,7 +16,7 @@ describe('MatchContainer', () => {
       league_id: 476,
       statusShort: "PST",
     }] 
-    let wrapper = shallow(<MatchContainer todaysMatches={mockMatch}/>)
+    let wrapper = shallow(<MatchesContainer todaysMatches={mockMatch}/>)
     expect(wrapper).toMatchSnapshot()
   })
 

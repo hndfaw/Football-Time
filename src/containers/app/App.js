@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { fetchTodaysMatches, fetchLeagues } from '../../apiCalls';
 import { setTodaysMatches, leaguesAction } from '../../actions';
 import  Header  from '../header/Header';
@@ -66,8 +67,11 @@ export class App extends Component {
   }
 }
 
+App.propTypes = {
+  todaysMatches : PropTypes.array,
+}
+
 export const mapStateToProps = state => ({
-  oneDayDate: state.oneDayDate,
   todaysMatches: state.todaysMatches,
 })
 
@@ -75,6 +79,16 @@ export const mapDispatchToProps = dispatch => ({
   handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
   handleLeagues: data => dispatch(leaguesAction(data)),
 })
+
+
+
+// Card.propTypes = {
+//   item : PropTypes.object,
+//   handleFavorite : PropTypes.func,
+//   favorite : PropTypes.bool,
+//   name : PropTypes.string,
+//   id: PropTypes.number
+// }
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
