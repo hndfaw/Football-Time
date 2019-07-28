@@ -24,7 +24,8 @@ import './match.css';
       {(match.statusShort === '1H' || match.statusShort === 'HT' || match.statusShort === '2H' || match.statusShort === 'ET' || match.statusShort === 'P' || match.statusShort === 'BT') ?
       <div className="match-status">
         <p className="status-content">{match.elapsed}'</p>
-      </div> : <p className="date">{match.event_date}</p>}
+      </div> :
+      <p className="date">{match.event_date}</p>}
     </section>
   )
   }

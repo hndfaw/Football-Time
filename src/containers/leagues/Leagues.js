@@ -25,7 +25,10 @@ export class League extends Component {
           homeTeamName: match.homeTeam.team_name,
           homeTeamLogo: match.homeTeam.logo,
           awayTeamName: match.awayTeam.team_name,
-          awayTeamLogo: match.awayTeam.logo
+          awayTeamLogo: match.awayTeam.logo,
+          elapsed: match.elapsed,
+          goalsHomeTeam: match.goalsHomeTeam,
+          goalsAwayTeam: match.goalsAwayTeam
         }
       })
       return cleanedData;
@@ -70,9 +73,11 @@ export class League extends Component {
       </div>
       <p className="team-name away-team-name">{match.awayTeamName}</p>
       </div>
-      {(match.statusShort !== 'MF' && match.statusShort !== 'NS' && match.statusShort !== 'TBD') ? <div className="match-status">
+      {(match.statusShort === '1H' || match.statusShort === 'HT' || match.statusShort === '2H' || match.statusShort === 'ET' || match.statusShort === 'P' || match.statusShort === 'BT') ?
+      <div className="match-status">
         <p className="status-content">{match.elapsed}'</p>
-      </div> : <p className="date">{match.event_date}</p>}
+      </div> :
+      <p className="date">{match.event_date}</p>}
     </section>
       )}
     )
