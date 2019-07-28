@@ -13,34 +13,15 @@
   z-index: 2;
 }
 
-.league-tab {
-  height: 100%;
-  width: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
 
-.league-btn {
-  background: transparent;
-  border: none;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-  outline: none;
-}
+
+
 
 .league-btn:hover {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.league-tab-inner-container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
+
 
 .league-tab-name {
   font-weight: normal;

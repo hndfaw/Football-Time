@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import './leagues.css';
 import { fetchOneLeaguesMatches } from '../../apiCalls';
 import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
-import loading from '../../images/loading.gif'
+import loading from '../../images/loading.gif';
+import LeaguesTabs from '../leaguesTabs/LeaguesTabs';
 
 
 export class Leagues extends Component {
@@ -39,7 +40,6 @@ export class Leagues extends Component {
   }
 
   changeOneLeaguesMatches = e => {
-    console.log(e.target)
 
     let id = parseInt(e.target.id)
     this.props.handleSelectedLeague(`league${id}`)
@@ -90,24 +90,7 @@ export class Leagues extends Component {
     )
   }
 
-  leagueTab = () => {
-    const {selectedLeague, leaguesData } = this.props;
-    let selectedId = parseInt(selectedLeague.slice(6,9))
-    
-    const leagueTab = leaguesData.map(league => {
-      const btnStyle = (selectedId === league.league_id) ? {background: 'rgba(0,0,0,0.1)'} : null
-      return (
-        <div className="league-tab" key={league.league_id}>
-          <button onClick={this.changeOneLeaguesMatches} style={btnStyle} className="league-btn" id={league.league_id}></button>
-          <div className="league-tab-inner-container">
-            <img src={league.logo} alt="league logo" className="league-tab-logo" />
-            <h4 className="league-tab-name">{league.name}</h4>
-          </div>
-        </div>
-      )
-    })
-    return leagueTab
-  }
+  
 
   dataLoading = () => {
     const { selectedLeague } = this.props;
@@ -120,7 +103,7 @@ export class Leagues extends Component {
     return (
       <main className="main">
         <section className="league-tabs-container">
-          {this.leagueTab()}
+          <LeaguesTabs changeOneLeaguesMatches={this.changeOneLeaguesMatches}/>
         </section>
            {this.dataLoading() ?
           <img src={loading} className="loading" alt="loading icon" /> :
@@ -131,7 +114,6 @@ export class Leagues extends Component {
 }
 
 Leagues.propTypes = {
-  leaguesData: PropTypes.array,
   league525: PropTypes.array,
   league524: PropTypes.array,
   league530: PropTypes.array,
@@ -141,7 +123,6 @@ Leagues.propTypes = {
 }
 
 export const mapStateToProps = state => ({
-  leaguesData: state.leaguesData,
   league524: state.league524,
   league525: state.league525,
   league530: state.league530,
