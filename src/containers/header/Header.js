@@ -3,19 +3,10 @@ import { connect } from 'react-redux';
 import logo from '../../images/football-time-logo.png';
 import './header.css';
 import { NavLink } from 'react-router-dom';
-import { fetchTodaysMatches } from '../../apiCalls';
-import { setTodaysMatches } from '../../actions';
-
-
 
 
 export class Header extends Component {
-
-  changeTodaysDate = e => {
-    fetchTodaysMatches(e.target.value).then(data => this.props.handleTodaysMatches(data.api.fixtures))
-  }
   
-
   render() {
 
     return (
@@ -31,7 +22,6 @@ export class Header extends Component {
             </NavLink>
           </div>
         </section>
-           <input className="pickup-a-date" type="date" onChange={this.changeTodaysDate}/>
       </header>
     )
   }
@@ -41,10 +31,6 @@ export const mapStateToProps = state => ({
   leaguesData: state.leaguesData,
 })
 
-export const mapDispatchToProps = dispatch => ({
-  handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
-})
 
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, null)(Header)

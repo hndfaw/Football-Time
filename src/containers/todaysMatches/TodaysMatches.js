@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './todaysMatches.css';
 import MatchContainer from '../matchesContainer/MatchesContainer';
+import { fetchTodaysMatches } from '../../apiCalls';
+import { setTodaysMatches } from '../../actions';
 
 
 
 export class Leagues extends Component {
 
- 
+  changeTodaysDate = e => {
+    fetchTodaysMatches(e.target.value).then(data => this.props.handleTodaysMatches(data.api.fixtures))
+  }
 
   filteredLeagus = () => {
     const {todaysMatches, leaguesData} = this.props;
@@ -22,7 +26,9 @@ export class Leagues extends Component {
     return filteredLeagus
   }
 
-
+  setNumOfLeagues = (num) => {
+    this.setState({numTodaysLeagues: num})
+  }
 
   setMatches = () => {
     const league = this.filteredLeagus().map(league => {
@@ -42,14 +48,14 @@ export class Leagues extends Component {
   }
 
   
-
-
   render() {
+    const msg = this.setMatches().length !== 0 ? '' : <p className="msg">There are no matches the selected day, change the date to view another day's matches.</p>
 
-      const msg = this.setMatches().length !== 0 ? '' : <p className="msg">There are no matches the selected day, change the date to view another day's matches.</p>
     return (
-      <main className="main">
-       
+      <main className="main-todays-matches">
+        <div>
+           <input type="date" className="date-picker" onChange={this.changeTodaysDate}/>
+        </div>
         {msg}
         {this.setMatches()} 
       </main>
@@ -62,4 +68,8 @@ export const mapStateToProps = state => ({
   todaysMatches: state.todaysMatches
 })
 
-export default connect(mapStateToProps, null)(Leagues)
+export const mapDispatchToProps = dispatch => ({
+  handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Leagues)

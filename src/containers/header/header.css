@@ -26,9 +26,8 @@ header {
 }
 
 .nav-btn-container {
-  /* border: 1px solid #fff; */
   height: 60%;
-  margin-right: 15px;
+  margin-right: 30px;
   width: 255px;
   display: flex;
   align-items: center;
@@ -69,5 +68,7 @@ header {
 }
 
 .pickup-a-date {
-  
+  position: fixed;
+  right: 5px;
+  top: 63px;
 }

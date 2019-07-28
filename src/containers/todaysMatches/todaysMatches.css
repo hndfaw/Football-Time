@@ -1,3 +1,4 @@
+
 .league-container {
   align-items: center;
   background: lightgray;
@@ -36,4 +37,15 @@
 
 .msg {
   margin-top: 25%;
+}
+
+.date-picker {
+  position: fixed;
+  right: 5px;
+  z-index: 2;
+  top: 63px;
+  outline: none;
+  border-radius: 3px;
+  width: 130px;
+  border: 1px solid gray;
 }

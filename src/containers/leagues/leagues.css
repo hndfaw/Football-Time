@@ -6,7 +6,7 @@
 .league-tabs-container {
   display: flex;
   width: 100%;
-  height: 60px;
+  height: 40px;
   position: sticky;
   top: 53px;
   background: lightgray;
