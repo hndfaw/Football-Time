@@ -7,7 +7,8 @@ import  Header  from '../header/Header';
 import  TodaysMatches  from '../todaysMatches/TodaysMatches';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import Leagues from '../leagues/Leagues';
-import Home from '../../components/home/Home'
+import Home from '../../components/home/Home';
+import loading from '../../images/loading.gif'
 
 
 
@@ -40,13 +41,25 @@ export class App extends Component {
   }
 
   render() {
+    const { todaysMatches, selectedLeague } = this.props
+    const x = this.props[selectedLeague].length === 0;
+    console.log(x)
     return (
       <div className="App">
           <Header />
           <Switch>
             <Route exact path="/" render={() => (<Home />)} />
-            <Route exact path="/todaysmatches" render={() => (<TodaysMatches />)} />
-            <Route exact path="/leagues" render={() => (<Leagues/>)} />
+            <Route exact path="/todaysmatches" render={() => (
+                todaysMatches.length === 0 ?
+                <img src={loading} alt="loading icon" /> :
+                <TodaysMatches />
+            )} />
+            <Route exact path="/leagues" render={() => (
+                x ?
+                <img src={loading} alt="loading icon" /> :
+                <Leagues/>
+
+                )} />
             <Route render={() => (
               <>
                 <p className="page-not-exist">The page you’re looking for can’t be found.</p><NavLink to="/" className="back-to-homepage"> Back to Homepage</NavLink>
@@ -59,7 +72,14 @@ export class App extends Component {
 }
 
 export const mapStateToProps = state => ({
-  oneDayDate: state.oneDayDate
+  oneDayDate: state.oneDayDate,
+  todaysMatches: state.todaysMatches,
+  league524: state.league524,
+  league525: state.league525,
+  league530: state.league530,
+  league754: state.league754,
+  league775: state.league775,
+  selectedLeague: state.selectedLeague
 })
 
 export const mapDispatchToProps = dispatch => ({
