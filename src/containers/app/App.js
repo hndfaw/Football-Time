@@ -57,7 +57,7 @@ export class App extends Component {
                 )} />
             <Route render={() => (
               <>
-                <p className="page-not-exist">The page you’re looking for can’t be found.</p><NavLink to="/" className="back-to-homepage"> Back to Homepage</NavLink>
+                <p className="page-not-exist">The page you’re looking for can’t be found.</p><NavLink to="/todaysmatches" className="back-to-homepage"> Back to Today's Matches</NavLink>
               </>
             )}/>
           </Switch>

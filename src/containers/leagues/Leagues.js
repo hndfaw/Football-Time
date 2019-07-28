@@ -111,16 +111,13 @@ export class League extends Component {
     const  dataLoading = (this.props[selectedLeague].length) === 0
     
     return (
-      dataLoading ?
-       <img src={loading} className="loading" alt="loading icon" /> :
-
       <main className="main">
         <section className="league-tabs-container">
           {this.leagueTab()}
         </section>
-        <section>
-          {this.selectLeaguesData()}
-        </section>
+           {dataLoading ?
+          <img src={loading} className="loading" alt="loading icon" /> :
+          this.selectLeaguesData()}
       </main>
     )
   }
