@@ -39,6 +39,8 @@ export class Leagues extends Component {
   }
 
   changeOneLeaguesMatches = e => {
+    console.log(e.target)
+
     let id = parseInt(e.target.id)
     this.props.handleSelectedLeague(`league${id}`)
 
@@ -95,8 +97,8 @@ export class Leagues extends Component {
     const leagueTab = leaguesData.map(league => {
       const btnStyle = (selectedId === league.league_id) ? {background: 'rgba(0,0,0,0.1)'} : null
       return (
-        <div onClick={this.changeOneLeaguesMatches} className="league-tab" key={league.league_id}>
-          <button style={btnStyle} className="league-btn" id={league.league_id}></button>
+        <div className="league-tab" key={league.league_id}>
+          <button onClick={this.changeOneLeaguesMatches} style={btnStyle} className="league-btn" id={league.league_id}></button>
           <div className="league-tab-inner-container">
             <img src={league.logo} alt="league logo" className="league-tab-logo" />
             <h4 className="league-tab-name">{league.name}</h4>

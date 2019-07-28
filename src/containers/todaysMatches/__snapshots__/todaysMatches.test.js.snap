@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Leagues should match the snapshot 1`] = `
+<main
+  className="main-todays-matches"
+>
+  <div>
+    <input
+      className="date-picker"
+      onChange={[Function]}
+      type="date"
+    />
+  </div>
+  <p
+    className="msg"
+  >
+    There are no matches the selected day, change the date to view another day's matches.
+  </p>
+</main>
+`;

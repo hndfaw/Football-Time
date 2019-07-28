@@ -10,11 +10,11 @@ exports[`Leagues should match the snopshot 1`] = `
     <div
       className="league-tab"
       key="524"
-      onClick={[Function]}
     >
       <button
         className="league-btn"
         id={524}
+        onClick={[Function]}
         style={
           Object {
             "background": "rgba(0,0,0,0.1)",

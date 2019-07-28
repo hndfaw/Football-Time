@@ -5,7 +5,8 @@ import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, set
 
 describe('Leagues', () => {
 
-  it('should match the snopshot', () => {
+  let wrapper;
+  beforeEach(() => {
     const mockLeagues = [
       {
         league_id: 524,
@@ -30,10 +31,28 @@ describe('Leagues', () => {
         statusShort: "NS"
       }
     ]
+    wrapper = shallow(<Leagues selectedLeague="league524" leaguesData={mockLeagues} league524={mockMatch} id={{league_id: 524}} />);
+  })
 
-    const wrapper = shallow(<Leagues selectedLeague="league524" leaguesData={mockLeagues} league524={mockMatch} />);
+  it('should match the snopshot', () => {
     expect(wrapper).toMatchSnapshot()
   })
+
+  // it('should call changeOneLeaguesMatches when button is clicked', () => {
+  //   const e = {target: {id: 524}}
+  //   const handleSelectedLeague = jest.fn();
+  //   wrapper.instance().changeOneLeaguesMatches(e)
+  //   wrapper.find('.league-btn').simulate('click');
+  //   expect(wrapper.instance().changeOneLeaguesMatches).toHaveBeenCalled();
+  // })
+
+  // it('changeOneLeaguesMatches should call another function', () => {
+  //   wrapper.instance().changeOneLeaguesMatches();
+  //   expect(wrapper.instance().selectLeaguesData).toHaveBeenCalled();
+  // })
+
+ 
+
 
 it('should dispatch with a setTodaysMatches action when handleTodaysMatches is called', () => {
   const mockDispatch = jest.fn();
