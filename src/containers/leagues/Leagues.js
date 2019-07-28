@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import './leagues.css';
 import { fetchOneLeaguesMatches } from '../../apiCalls';
 import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
+import loading from '../../images/loading.gif'
 
 
 export class League extends Component {
@@ -106,8 +107,13 @@ export class League extends Component {
   }
 
   render() {
-
+    const { selectedLeague } = this.props
+    const  dataLoading = (this.props[selectedLeague].length) === 0
+    
     return (
+      dataLoading ?
+       <img src={loading} alt="loading icon" /> :
+
       <main className="main">
         <section className="league-tabs-container">
           {this.leagueTab()}

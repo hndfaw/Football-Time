@@ -36,29 +36,24 @@ export class App extends Component {
     fetchLeagues().then(data =>
       this.props.handleLeagues(data.api.leagues))
 
-   
 
   }
 
   render() {
-    const { todaysMatches, selectedLeague } = this.props
-    const x = this.props[selectedLeague].length === 0;
-    console.log(x)
+    const { todaysMatches } = this.props
+    const dataLoading = todaysMatches.length === 0
     return (
       <div className="App">
           <Header />
           <Switch>
             <Route exact path="/" render={() => (<Home />)} />
             <Route exact path="/todaysmatches" render={() => (
-                todaysMatches.length === 0 ?
+                dataLoading ?
                 <img src={loading} alt="loading icon" /> :
                 <TodaysMatches />
             )} />
             <Route exact path="/leagues" render={() => (
-                x ?
-                <img src={loading} alt="loading icon" /> :
                 <Leagues/>
-
                 )} />
             <Route render={() => (
               <>
@@ -74,12 +69,6 @@ export class App extends Component {
 export const mapStateToProps = state => ({
   oneDayDate: state.oneDayDate,
   todaysMatches: state.todaysMatches,
-  league524: state.league524,
-  league525: state.league525,
-  league530: state.league530,
-  league754: state.league754,
-  league775: state.league775,
-  selectedLeague: state.selectedLeague
 })
 
 export const mapDispatchToProps = dispatch => ({
