@@ -2,7 +2,6 @@
   margin-top: 53px;
 }
 
-
 .league-tabs-container {
   display: flex;
   width: 100%;
@@ -13,24 +12,6 @@
   z-index: 2;
 }
 
-
-
-
-
 .league-btn:hover {
   background: rgba(0, 0, 0, 0.1);
-}
-
-
-
-.league-tab-name {
-  font-weight: normal;
-  font-size: 14px;
-  margin-left: 10px;
-}
-
-
-.league-tab-logo {
-  height: 50%;
-  width: auto;
 }

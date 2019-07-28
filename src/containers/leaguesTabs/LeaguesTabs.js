@@ -24,14 +24,8 @@ class LeaguesTabs extends Component {
     return leagueTab
   }
 
-  
-
   render() {
-    return (
-      <>
-      {this.leagueTab()}
-      </>
-    )
+    return  this.leagueTab()
   }
 }
 

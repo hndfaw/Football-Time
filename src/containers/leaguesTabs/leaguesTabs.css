@@ -22,3 +22,14 @@
   display: flex;
   align-items: center;
 }
+
+.league-tab-logo {
+  height: 50%;
+  width: auto;
+}
+
+.league-tab-name {
+  font-weight: normal;
+  font-size: 14px;
+  margin-left: 10px;
+}
