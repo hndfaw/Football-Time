@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
   
   render() {
     const {match} = this.props
-  
+    
   return (
     <Link to={`/todaysmatches/${match.fixture_id}`} className="match-container" key={match.fixture_id}>
       <div className="match-second-container">

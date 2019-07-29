@@ -97,7 +97,11 @@ export class App extends Component {
             <Route exact path='/todaysmatches/:fixture_id' render={({ match}) => {
               const { fixture_id } = match.params;
               const foundMatch = this.props.todaysMatches.find(match => match.fixture_id === Number(fixture_id));
-              console.log(foundMatch)
+              return <MatchDetail {...foundMatch}/>
+            }}/>
+            <Route exact path='/leagues/524/:fixture_id' render={({ match}) => {
+              const { fixture_id } = match.params;
+              const foundMatch = this.props.league524.find(match => match.fixture_id === Number(fixture_id));
               return <MatchDetail {...foundMatch}/>
             }}/>
             <Route render={() => (

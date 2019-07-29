@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './leagues.css';
 import { setSelectedLeague } from '../../actions';
 import loading from '../../images/loading.gif';
 import LeaguesTabs from '../leaguesTabs/LeaguesTabs';
+import { Link } from 'react-router-dom';
 
 export class Leagues extends Component {
 
@@ -20,7 +21,7 @@ export class Leagues extends Component {
     )
     return filteredMatches.map(match => {
       return (
-        <section className="match-container" key={match.fixture_id}>
+        <Link to={`/leagues/${match.league_id}/${match.fixture_id}`} className="match-container" key={match.fixture_id}>
       <div className="match-second-container">
       <p className="team-name home-team-name">{match.homeTeamName}</p>
       <div className="logos-result-container">
@@ -40,7 +41,7 @@ export class Leagues extends Component {
       </div> :
       <p className="date">{match.event_date}</p>}
       <p className="match-status">{match.status}</p>
-    </section>
+    </Link>
       )}
     )
   }
