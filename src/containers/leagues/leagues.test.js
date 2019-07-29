@@ -6,15 +6,8 @@ import { setSelectedLeague } from '../../actions';
 describe('Leagues', () => {
 
   let wrapper;
-  beforeEach(() => {
 
-    const leaguesData = [
-      {
-        league_id: 524,
-        logo: "https://www.api-football.com/public/leagues/2.png",
-        name: "Premier League"
-      }
-    ]
+  beforeEach(() => {
 
     const mockMatch = [
       {
@@ -40,13 +33,21 @@ describe('Leagues', () => {
   })
  
 
-it('should dispatch with a setSelectedLeague action when handleSelectedLeague is called', () => {
-  const mockDispatch = jest.fn();
-  const mockMatch = [{match: 'match'}];
-  const mockAction = setSelectedLeague(mockMatch);
-  const mappedProps = mapDispatchToProps(mockDispatch);
-  mappedProps.handleSelectedLeague(mockMatch);
-  expect(mockDispatch).toHaveBeenCalledWith(mockAction);
-})
+  it('should dispatch with a setSelectedLeague action when handleSelectedLeague is called', () => {
+    const mockDispatch = jest.fn();
+    const mockMatch = [{match: 'match'}];
+    const mockAction = setSelectedLeague(mockMatch);
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.handleSelectedLeague(mockMatch);
+    expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+  })
+
+  it('should set the state as the input changes', () => {
+    let event = {target: {value: 'Barcelona'}}
+    let expected = {searchTerm: 'Barcelona'};
+    wrapper.instance().handleOnChange(event);
+    expect(wrapper.state()).toEqual(expected)
+  })
+
 
 })

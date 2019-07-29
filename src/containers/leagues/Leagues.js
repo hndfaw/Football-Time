@@ -47,7 +47,6 @@ export class Leagues extends Component {
 
   dataLoading = () => {
     const { selectedLeague } = this.props;
-    console.log(selectedLeague)
     const  dataLoading = (this.props[selectedLeague].length) === 0;
     return dataLoading
   }

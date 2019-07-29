@@ -9,6 +9,7 @@ import { setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPr
 export class LeaguesTabs extends Component {
 
   fetchData = e => {
+
     let id = parseInt(e.target.id)
       this.props.handleSelectedLeague(`league${id}`)
       this.props[`league${id}`].length === 0 ?
@@ -52,12 +53,11 @@ export class LeaguesTabs extends Component {
 
   leagueTab = () => {
     const {leaguesData } = this.props;
-    
     const leagueTab = leaguesData.map(league => {
 
       return (
         <NavLink activeClassName="active-league-tab" to={`/leagues/${league.league_id}`} className="league-tab" key={league.league_id} >
-          <button onClick={this.fetchData} className="league-btn" id={league.league_id}></button>
+          <input type="button" onClick={this.fetchData} className="league-btn" id={league.league_id} />
           <div className="league-tab-inner-container">
             <img src={league.logo} alt="league logo" className="league-tab-logo" />
             <h4 className="league-tab-name">{league.name}</h4>
