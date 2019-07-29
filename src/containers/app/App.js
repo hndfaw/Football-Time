@@ -10,7 +10,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import Leagues from '../leagues/Leagues';
 import Home from '../../components/home/Home';
 import loading from '../../images/loading.gif';
-import MatchDetail from '../../components/MatchDetail'
+import MatchDetail from '../../components/matchDetail/MatchDetail'
 
 
 export class App extends Component {

@@ -1,0 +1,32 @@
+.match-detail-container {
+  border: 1px solid red;
+  width: 100%;
+  margin-top: 100px;
+  height: 50vh;
+}
+
+.both-teams-container {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-around;
+}
+
+.single-team-container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-team-name {
+  background: rgba(0,0,0,0.1);
+  border: rgba(0,0,0,0.3);
+  border-radius: 3px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 240px;
+}
