@@ -9,7 +9,8 @@ import  TodaysMatches  from '../todaysMatches/TodaysMatches';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import Leagues from '../leagues/Leagues';
 import Home from '../../components/home/Home';
-import loading from '../../images/loading.gif'
+import loading from '../../images/loading.gif';
+import MatchDetail from '../../components/MatchDetail'
 
 
 export class App extends Component {
@@ -93,6 +94,12 @@ export class App extends Component {
             <Route exact path="/leagues/775" render={() => (
                 <Leagues matches={this.props.league775}  />
                 )} />
+            <Route exact path='/todaysmatches/:fixture_id' render={({ match}) => {
+              const { fixture_id } = match.params;
+              const foundMatch = this.props.todaysMatches.find(match => match.fixture_id === Number(fixture_id));
+              console.log(foundMatch)
+              return <MatchDetail {...foundMatch}/>
+            }}/>
             <Route render={() => (
               <>
                 <p className="page-not-exist">The page you’re looking for can’t be found.</p><NavLink to="/todaysmatches" className="back-to-homepage"> Back to Today's Matches</NavLink>
