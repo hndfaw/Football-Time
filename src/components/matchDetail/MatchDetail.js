@@ -2,7 +2,7 @@ import React from 'react';
 import './matchDetail.css';
 
 
-function MatchDetail({ homeTeamLogo, awayTeamLogo, homeTeamName, goalsHomeTeam, goalsAwayTeam, event_date, awayTeamName, status}) {
+export const MatchDetail = ({ homeTeamLogo, awayTeamLogo, homeTeamName, goalsHomeTeam, goalsAwayTeam, event_date, awayTeamName, status}) => {
 
   return (
     <section className="match-detail-container">

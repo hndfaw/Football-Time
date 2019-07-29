@@ -17,9 +17,10 @@ exports[`Leagues should match the snopshot 1`] = `
       type="text"
     />
   </section>
-  <section
+  <Link
     className="match-container"
     key="157015"
+    to="/leagues/524/157015"
   >
     <div
       className="match-second-container"
@@ -74,6 +75,6 @@ exports[`Leagues should match the snopshot 1`] = `
     >
       Not Started
     </p>
-  </section>
+  </Link>
 </main>
 `;

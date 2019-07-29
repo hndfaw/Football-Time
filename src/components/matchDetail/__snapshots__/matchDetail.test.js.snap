@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should match the match snapshot 1`] = `
+<section
+  className="match-detail-container"
+>
+  <div
+    className="both-teams-container"
+  >
+    <div
+      className="single-team-container"
+    >
+      <img
+        alt="home team logo"
+      />
+      <h4
+        className="detail-team-name"
+      />
+    </div>
+    <h4
+      className="detail-result"
+    >
+      <span />
+       - 
+      <span />
+    </h4>
+    <div
+      className="single-team-container"
+    >
+      <img
+        alt="away team logo"
+      />
+      <h4
+        className="detail-team-name"
+      />
+    </div>
+  </div>
+  <h5
+    className="detail-other-info"
+  >
+    <span />
+     | 
+    <span />
+  </h5>
+</section>
+`;

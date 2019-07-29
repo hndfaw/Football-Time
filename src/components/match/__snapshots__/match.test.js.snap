@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Match should match the match snapshot 1`] = `
-<section
+<Link
   className="match-container"
+  to="/todaysmatches/undefined"
 >
   <div
     className="match-second-container"
@@ -49,5 +50,5 @@ exports[`Match should match the match snapshot 1`] = `
   <p
     className="match-status"
   />
-</section>
+</Link>
 `;
