@@ -114,6 +114,16 @@ export class App extends Component {
               const foundMatch = this.props.league530.find(match => match.fixture_id === Number(fixture_id));
               return <MatchDetail {...foundMatch}/>
             }}/>
+            <Route exact path='/leagues/754/:fixture_id' render={({ match}) => {
+              const { fixture_id } = match.params;
+              const foundMatch = this.props.league754.find(match => match.fixture_id === Number(fixture_id));
+              return <MatchDetail {...foundMatch}/>
+            }}/>
+            <Route exact path='/leagues/775/:fixture_id' render={({ match}) => {
+              const { fixture_id } = match.params;
+              const foundMatch = this.props.league775.find(match => match.fixture_id === Number(fixture_id));
+              return <MatchDetail {...foundMatch}/>
+            }}/>
             <Route render={() => (
               <>
                 <p className="page-not-exist">The page you’re looking for can’t be found.</p><NavLink to="/todaysmatches" className="back-to-homepage"> Back to Today's Matches</NavLink>
