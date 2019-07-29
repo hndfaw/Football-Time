@@ -37,3 +37,7 @@
   font-size: 14px;
   margin-left: 10px;
 }
+
+.active-league-tab {
+  background: rgba(0,0,0,0.1)
+}

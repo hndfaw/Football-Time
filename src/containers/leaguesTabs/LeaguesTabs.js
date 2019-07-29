@@ -10,11 +10,8 @@ export class LeaguesTabs extends Component {
 
   fetchData = e => {
     let id = parseInt(e.target.id)
-
       this.props.handleSelectedLeague(`league${id}`)
-  
       this.props[`league${id}`].length === 0 ?
-  
       fetchOneLeaguesMatches(id).then(data => {
         const cleanedData = this.cleanMatches(data.api.fixtures)
         if (id === 525) {
@@ -54,14 +51,13 @@ export class LeaguesTabs extends Component {
   }
 
   leagueTab = () => {
-    const {selectedLeague, leaguesData } = this.props;
-    let selectedId = parseInt(selectedLeague.slice(6,9))
+    const {leaguesData } = this.props;
     
     const leagueTab = leaguesData.map(league => {
-      const btnStyle = (selectedId === league.league_id) ? {background: 'rgba(0,0,0,0.1)'} : null
+
       return (
-        <NavLink  to={`/leagues/${league.league_id}`} className="league-tab" key={league.league_id} id={league.league_id}>
-          <button onClick={this.fetchData} style={btnStyle} className="league-btn" id={league.league_id}></button>
+        <NavLink activeClassName="active-league-tab" to={`/leagues/${league.league_id}`} className="league-tab" key={league.league_id} >
+          <button onClick={this.fetchData} className="league-btn" id={league.league_id}></button>
           <div className="league-tab-inner-container">
             <img src={league.logo} alt="league logo" className="league-tab-logo" />
             <h4 className="league-tab-name">{league.name}</h4>

@@ -7,18 +7,21 @@ import { NavLink } from 'react-router-dom';
 
 
 export class Header extends Component {
-
+  
   render() {
+    const {selectedLeague } = this.props;
 
+    let selectedId = parseInt(selectedLeague.slice(6,9))
+    console.log(this.props.leaguesData)
     return (
       <header>
         <img className="logo" src={logo} alt="football time logo" />
         <section className="header-tabs-container" >
           <div className="nav-btn-container">
-          <NavLink to="/todaysmatches" className="all-leagues-tab">
+          <NavLink to="/todaysmatches" activeClassName="nav-tab" className="all-leagues-tab">
               Today's Matches
             </NavLink>
-          <NavLink to="/leagues/524" className="one-league-tab">
+          <NavLink to={`/leagues/${selectedId}`} activeClassName="nav-tab" className="one-league-tab">
               Leagues
             </NavLink>
           </div>
@@ -30,10 +33,12 @@ export class Header extends Component {
 
 Header.propTypes = {
   leaguesData : PropTypes.array,
+  
 }
 
 export const mapStateToProps = state => ({
   leaguesData: state.leaguesData,
+  selectedLeague: state.selectedLeague
 })
 
 
