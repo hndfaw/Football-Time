@@ -14,12 +14,14 @@ exports[`Header should match the snopshot 1`] = `
       className="nav-btn-container"
     >
       <NavLink
+        activeClassName="nav-tab"
         className="all-leagues-tab"
         to="/todaysmatches"
       >
         Today's Matches
       </NavLink>
       <NavLink
+        activeClassName="nav-tab"
         className="one-league-tab"
         to="/leagues/524"
       >

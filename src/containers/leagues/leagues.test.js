@@ -8,13 +8,13 @@ describe('Leagues', () => {
   let wrapper;
   beforeEach(() => {
 
-    // const leaguesData = [
-    //   {
-    //     league_id: 524,
-    //     logo: "https://www.api-football.com/public/leagues/2.png",
-    //     name: "Premier League"
-    //   }
-    // ]
+    const leaguesData = [
+      {
+        league_id: 524,
+        logo: "https://www.api-football.com/public/leagues/2.png",
+        name: "Premier League"
+      }
+    ]
 
     const mockMatch = [
       {
@@ -32,10 +32,10 @@ describe('Leagues', () => {
         statusShort: "NS"
       }
     ]
-    wrapper = shallow(<Leagues dataLoading={mockMatch} selectedLeague="league524" mathes={mockMatch} id={{league_id: 524}} />);
+    wrapper = shallow(<Leagues dataLoading={mockMatch} selectedLeague="league524" league524={mockMatch} matches={mockMatch} id={{league_id: 524}} />);
   })
 
-  it.skip('should match the snopshot', () => {
+  it('should match the snopshot', () => {
     expect(wrapper).toMatchSnapshot()
   })
  

@@ -9,10 +9,10 @@ import { NavLink } from 'react-router-dom';
 export class Header extends Component {
   
   render() {
-    const {selectedLeague } = this.props;
+    const { selectedLeague } = this.props;
 
     let selectedId = parseInt(selectedLeague.slice(6,9))
-    console.log(this.props.leaguesData)
+
     return (
       <header>
         <img className="logo" src={logo} alt="football time logo" />

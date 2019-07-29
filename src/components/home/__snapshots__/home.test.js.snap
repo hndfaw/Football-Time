@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should match the match snapshot 1`] = `
+<div>
+  <p
+    className="welcome"
+  >
+    Welcome to Football Time! in the navbar click on a button
+  </p>
+</div>
+`;

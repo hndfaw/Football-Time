@@ -13,8 +13,8 @@ export class Leagues extends Component {
   }
 
   selectLeaguesData = () => {
-
-    const filteredMatches = this.props.matches.filter(match =>  
+    const { matches } = this.props
+    const filteredMatches = matches.filter(match =>  
       match.homeTeamName.toUpperCase().includes(this.state.searchTerm.toUpperCase()) ||
       match.awayTeamName.toUpperCase().includes(this.state.searchTerm.toUpperCase())
     )
@@ -47,6 +47,7 @@ export class Leagues extends Component {
 
   dataLoading = () => {
     const { selectedLeague } = this.props;
+    console.log(selectedLeague)
     const  dataLoading = (this.props[selectedLeague].length) === 0;
     return dataLoading
   }
