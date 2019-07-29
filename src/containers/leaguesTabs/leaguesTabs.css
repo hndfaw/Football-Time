@@ -5,6 +5,8 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  text-decoration: none;
+  color: #000;
 }
 
 .league-btn {

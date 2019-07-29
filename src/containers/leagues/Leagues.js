@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import './leagues.css';
-// import { fetchOneLeaguesMatches } from '../../apiCalls';
-import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
+import { setSelectedLeague } from '../../actions';
 import loading from '../../images/loading.gif';
 import LeaguesTabs from '../leaguesTabs/LeaguesTabs';
-import {Link} from 'react-router-dom';
-
-
 
 export class Leagues extends Component {
 
@@ -17,14 +13,14 @@ export class Leagues extends Component {
   }
 
   selectLeaguesData = () => {
-    console.log(this.props.matches)
+
     const filteredMatches = this.props.matches.filter(match =>  
       match.homeTeamName.toUpperCase().includes(this.state.searchTerm.toUpperCase()) ||
       match.awayTeamName.toUpperCase().includes(this.state.searchTerm.toUpperCase())
     )
     return filteredMatches.map(match => {
       return (
-        <Link   className="match-container" key={match.fixture_id}>
+        <section className="match-container" key={match.fixture_id}>
       <div className="match-second-container">
       <p className="team-name home-team-name">{match.homeTeamName}</p>
       <div className="logos-result-container">
@@ -44,13 +40,10 @@ export class Leagues extends Component {
       </div> :
       <p className="date">{match.event_date}</p>}
       <p className="match-status">{match.status}</p>
-    </Link>
+    </section>
       )}
     )
   }
-
-
-
 
   dataLoading = () => {
     const { selectedLeague } = this.props;
@@ -64,21 +57,16 @@ export class Leagues extends Component {
 
   render() {
 
-   
-
-   
-    
     return (
       <main className="main">
         <section className="league-tabs-container">
           <LeaguesTabs selectLeaguesData={this.selectLeaguesData}/>
-          <input type="text" onChange={this.props.handleOnChange} placeholder="Search" className="search-bar"/>
+          <input type="text" onChange={this.handleOnChange} placeholder="Search" className="search-bar"/>
         </section>
            {this.dataLoading() ?
           <img src={loading} className="loading" alt="loading icon" /> :
           this.selectLeaguesData()
           }
-
       </main>
     )
   }
@@ -103,12 +91,6 @@ export const mapStateToProps = state => ({
 })
 
 export const mapDispatchToProps = dispatch => ({
-  handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
-  handlePremierLeague: data => dispatch(setPremierLeague(data)),
-  handleLeague1: data => dispatch(setLeague1(data)),
-  handleChampionsLeague: data => dispatch(setChampionsLeague(data)),
-  handleBundesliga1: data => dispatch(setBundesliga1(data)),
-  handlePrimeraDivision: data => dispatch(setPrimeraDivision(data)),
   handleSelectedLeague: leagueName => dispatch(setSelectedLeague(leagueName))
 })
 

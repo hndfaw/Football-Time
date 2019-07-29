@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './match.css';
-import {Link} from 'react-router-dom';
+
 
 
   export class Match extends Component {
@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom';
     const {match} = this.props
   
   return (
-    <Link className="match-container" key={match.fixture_id}>
+    <section className="match-container" key={match.fixture_id}>
       <div className="match-second-container">
       <p className="team-name home-team-name">{match.homeTeamName}</p>
       <div className="logos-result-container">
@@ -30,7 +30,7 @@ import {Link} from 'react-router-dom';
       <p className="date">{match.event_date}</p>
       }
       <p className="match-status">{match.status}</p>
-    </Link>
+    </section>
   )
   }
 }
