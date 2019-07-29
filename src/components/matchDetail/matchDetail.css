@@ -1,14 +1,18 @@
 .match-detail-container {
-  border: 1px solid red;
   width: 100%;
-  margin-top: 100px;
+  margin-top: 195px;
   height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .both-teams-container {
-  border: 1px solid red;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  width: 80%;
+
 }
 
 .single-team-container {
@@ -29,4 +33,19 @@
   align-items: center;
   margin-top: 10px;
   width: 240px;
+}
+
+.detail-result {
+  font-size: 36px;
+}
+
+.detail-other-info {
+  border: 1px solid lightblue;
+  height: 50px;
+  font-size: 20px;
+  color: gray;
+  padding-top: 13px;
+  margin-top: 30px;
+  width: 69%;
+  border-radius: 3px;
 }
