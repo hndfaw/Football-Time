@@ -41,10 +41,10 @@ export class App extends Component {
         this.props.handlePremierLeague(cleanedData)
       })
 
-      fetchOneLeaguesMatches(525).then(data => {
-        const cleanedData = this.cleanMatches(data.api.fixtures)
-        this.props.handleLeague1(cleanedData)
-      })
+      // fetchOneLeaguesMatches(525).then(data => {
+      //   const cleanedData = this.cleanMatches(data.api.fixtures)
+      //   this.props.handleLeague1(cleanedData)
+      // })
   }
 
   // changeOneLeaguesMatches = e => {
@@ -106,10 +106,19 @@ export class App extends Component {
                 <TodaysMatches />
             )} />
             <Route exact path="/524" render={() => (
-                <Leagues x={this.props.league524} />
+                <Leagues matches={this.props.league524} />
                 )} />
             <Route exact path="/525" render={() => (
-                <Leagues x={this.props.league525}  />
+                <Leagues matches={this.props.league525}  />
+                )} />
+            <Route exact path="/530" render={() => (
+                <Leagues matches={this.props.league530}  />
+                )} />
+            <Route exact path="/754" render={() => (
+                <Leagues matches={this.props.league754}  />
+                )} />
+            <Route exact path="/775" render={() => (
+                <Leagues matches={this.props.league775}  />
                 )} />
             <Route render={() => (
               <>

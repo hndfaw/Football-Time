@@ -16,18 +16,12 @@ export class Leagues extends Component {
     searchTerm: ''
   }
 
-  // componentDidMount() {
-  //   fetchOneLeaguesMatches(524).then(data => {
-  //     const cleanedData = this.cleanMatches(data.api.fixtures)
-  //     this.props.handlePremierLeague(cleanedData)
-  //   })
-  // }
 
 
 
   selectLeaguesData = () => {
-    console.log(this.props.x)
-    const filteredMatches = this.props.x.filter(match =>  
+    console.log(this.props.matches)
+    const filteredMatches = this.props.matches.filter(match =>  
       match.homeTeamName.toUpperCase().includes(this.state.searchTerm.toUpperCase()) ||
       match.awayTeamName.toUpperCase().includes(this.state.searchTerm.toUpperCase())
     )
@@ -75,7 +69,7 @@ export class Leagues extends Component {
     return (
       <main className="main">
         <section className="league-tabs-container">
-          <LeaguesTabs changeOneLeaguesMatches={this.props.changeOneLeaguesMatches}/>
+          <LeaguesTabs selectLeaguesData={this.selectLeaguesData}/>
           <input type="text" onChange={this.props.handleOnChange} placeholder="Search" className="search-bar"/>
         </section>
            {this.dataLoading() ?
