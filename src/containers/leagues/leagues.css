@@ -15,3 +15,9 @@
 .league-btn:hover {
   background: rgba(0, 0, 0, 0.1);
 }
+
+.search-bar {
+  outline: none;
+  padding-left: 5px;
+  font-size: 14px;
+}
