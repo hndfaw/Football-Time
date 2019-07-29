@@ -15,6 +15,12 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
+  text-decoration: none;
+  color: #000;
+}
+
+.match-container:hover {
+  background:  rgba(0,0,0,0.05);
 }
 
 .match-second-container {
