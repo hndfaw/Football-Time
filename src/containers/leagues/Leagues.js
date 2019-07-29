@@ -10,12 +10,18 @@ import LeaguesTabs from '../leaguesTabs/LeaguesTabs';
 
 export class Leagues extends Component {
 
+  state = {
+    searchTerm: ''
+  }
+
   componentDidMount() {
     fetchOneLeaguesMatches(524).then(data => {
       const cleanedData = this.cleanMatches(data.api.fixtures)
       this.props.handlePremierLeague(cleanedData)
     })
   }
+
+  
 
   cleanMatches = data => {
     const cleanedData = data.map(match => {
@@ -63,7 +69,12 @@ export class Leagues extends Component {
   }
 
   selectLeaguesData = () => {
-    return this.props[this.props.selectedLeague].map(match => {
+
+    const filteredMatches = this.props[this.props.selectedLeague].filter(match =>  
+      match.homeTeamName.toUpperCase().includes(this.state.searchTerm.toUpperCase()) ||
+      match.awayTeamName.toUpperCase().includes(this.state.searchTerm.toUpperCase())
+    )
+    return filteredMatches.map(match => {
         return (
         <section className="match-container" key={match.fixture_id}>
       <div className="match-second-container">
@@ -90,7 +101,6 @@ export class Leagues extends Component {
     )
   }
 
-  
 
   dataLoading = () => {
     const { selectedLeague } = this.props;
@@ -98,11 +108,16 @@ export class Leagues extends Component {
     return dataLoading
   }
 
+  handleOnChange = e => {
+    this.setState({searchTerm: e.target.value})
+  }
+
   render() {
     
     return (
       <main className="main">
         <section className="league-tabs-container">
+        <input type="text" onChange={this.handleOnChange} />
           <LeaguesTabs changeOneLeaguesMatches={this.changeOneLeaguesMatches}/>
         </section>
            {this.dataLoading() ?

@@ -8,7 +8,6 @@ describe('Leagues', () => {
   let wrapper;
   beforeEach(() => {
 
-
     const mockMatch = [
       {
         awayTeamLogo: "https://www.api-football.com/public/teams/71.png",
