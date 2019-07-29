@@ -78,14 +78,4 @@ export const mapDispatchToProps = dispatch => ({
 })
 
 
-
-// Card.propTypes = {
-//   item : PropTypes.object,
-//   handleFavorite : PropTypes.func,
-//   favorite : PropTypes.bool,
-//   name : PropTypes.string,
-//   id: PropTypes.number
-// }
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(App);
