@@ -11,7 +11,7 @@ export class MatchesContainer extends Component {
        match.league_id === id
     )
 
-    const match = filterMatchesPerLeague.map((match, i) => {
+    const match = filterMatchesPerLeague.map(match => {
       return (
         <Match key={match.fixture_id} match={match}/>
       )

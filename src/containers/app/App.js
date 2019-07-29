@@ -3,14 +3,13 @@ import './App.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchTodaysMatches, fetchLeagues, fetchOneLeaguesMatches } from '../../apiCalls';
-import { setTodaysMatches, leaguesAction, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
+import { setTodaysMatches, leaguesAction, setPremierLeague} from '../../actions';
 import  Header  from '../header/Header';
 import  TodaysMatches  from '../todaysMatches/TodaysMatches';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import Leagues from '../leagues/Leagues';
 import Home from '../../components/home/Home';
 import loading from '../../images/loading.gif'
-
 
 
 export class App extends Component {
@@ -107,6 +106,11 @@ export class App extends Component {
 
 App.propTypes = {
   todaysMatches : PropTypes.array,
+  league524 : PropTypes.array,
+  league525 : PropTypes.array,
+  league530 : PropTypes.array,
+  league754 : PropTypes.array,
+  league775 : PropTypes.array,
 }
 
 export const mapStateToProps = state => ({
@@ -116,18 +120,12 @@ export const mapStateToProps = state => ({
   league530: state.league530,
   league754: state.league754,
   league775: state.league775,
-  selectedLeague: state.selectedLeague
 })
 
 export const mapDispatchToProps = dispatch => ({
   handleTodaysMatches: data => dispatch(setTodaysMatches(data)),
   handleLeagues: data => dispatch(leaguesAction(data)),
   handlePremierLeague: data => dispatch(setPremierLeague(data)),
-  handleLeague1: data => dispatch(setLeague1(data)),
-  handleChampionsLeague: data => dispatch(setChampionsLeague(data)),
-  handleBundesliga1: data => dispatch(setBundesliga1(data)),
-  handlePrimeraDivision: data => dispatch(setPrimeraDivision(data)),
-  handleSelectedLeague: leagueName => dispatch(setSelectedLeague(leagueName))
 })
 
 

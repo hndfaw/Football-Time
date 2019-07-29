@@ -16,9 +16,6 @@ export class Leagues extends Component {
     searchTerm: ''
   }
 
-
-
-
   selectLeaguesData = () => {
     console.log(this.props.matches)
     const filteredMatches = this.props.matches.filter(match =>  
@@ -26,9 +23,8 @@ export class Leagues extends Component {
       match.awayTeamName.toUpperCase().includes(this.state.searchTerm.toUpperCase())
     )
     return filteredMatches.map(match => {
-
       return (
-        <Link to={`/leagues/${match.league_id}`}  className="match-container" key={match.fixture_id}>
+        <Link   className="match-container" key={match.fixture_id}>
       <div className="match-second-container">
       <p className="team-name home-team-name">{match.homeTeamName}</p>
       <div className="logos-result-container">
@@ -54,6 +50,8 @@ export class Leagues extends Component {
   }
 
 
+
+
   dataLoading = () => {
     const { selectedLeague } = this.props;
     const  dataLoading = (this.props[selectedLeague].length) === 0;
@@ -65,6 +63,10 @@ export class Leagues extends Component {
   }
 
   render() {
+
+   
+
+   
     
     return (
       <main className="main">
@@ -74,7 +76,9 @@ export class Leagues extends Component {
         </section>
            {this.dataLoading() ?
           <img src={loading} className="loading" alt="loading icon" /> :
-          this.selectLeaguesData()}
+          this.selectLeaguesData()
+          }
+
       </main>
     )
   }
