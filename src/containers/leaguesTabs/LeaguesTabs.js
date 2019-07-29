@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './leaguesTabs.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import {NavLink} from 'react-router-dom';
+
 
 export class LeaguesTabs extends Component {
 
@@ -12,13 +14,13 @@ export class LeaguesTabs extends Component {
     const leagueTab = leaguesData.map(league => {
       const btnStyle = (selectedId === league.league_id) ? {background: 'rgba(0,0,0,0.1)'} : null
       return (
-        <div className="league-tab" key={league.league_id}>
+        <NavLink to={`/${league.league_id}`} className="league-tab" key={league.league_id}>
           <button onClick={this.props.changeOneLeaguesMatches} style={btnStyle} className="league-btn" id={league.league_id}></button>
           <div className="league-tab-inner-container">
             <img src={league.logo} alt="league logo" className="league-tab-logo" />
             <h4 className="league-tab-name">{league.name}</h4>
           </div>
-        </div>
+        </NavLink>
       )
     })
     return leagueTab

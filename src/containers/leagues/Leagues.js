@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import './leagues.css';
-import { fetchOneLeaguesMatches } from '../../apiCalls';
+// import { fetchOneLeaguesMatches } from '../../apiCalls';
 import { setTodaysMatches, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
 import loading from '../../images/loading.gif';
 import LeaguesTabs from '../leaguesTabs/LeaguesTabs';
+import {Link} from 'react-router-dom';
+
 
 
 export class Leagues extends Component {
@@ -14,69 +16,25 @@ export class Leagues extends Component {
     searchTerm: ''
   }
 
-  componentDidMount() {
-    fetchOneLeaguesMatches(524).then(data => {
-      const cleanedData = this.cleanMatches(data.api.fixtures)
-      this.props.handlePremierLeague(cleanedData)
-    })
-  }
+  // componentDidMount() {
+  //   fetchOneLeaguesMatches(524).then(data => {
+  //     const cleanedData = this.cleanMatches(data.api.fixtures)
+  //     this.props.handlePremierLeague(cleanedData)
+  //   })
+  // }
 
-  
 
-  cleanMatches = data => {
-    const cleanedData = data.map(match => {
-
-      const date = match.event_date.split("").slice(0, 10).join("")
-        return {
-          event_date: date,
-          league_id: match.league_id,
-          statusShort: match.statusShort,
-          fixture_id: match.fixture_id,
-          homeTeamName: match.homeTeam.team_name,
-          homeTeamLogo: match.homeTeam.logo,
-          awayTeamName: match.awayTeam.team_name,
-          awayTeamLogo: match.awayTeam.logo,
-          elapsed: match.elapsed,
-          goalsHomeTeam: match.goalsHomeTeam,
-          goalsAwayTeam: match.goalsAwayTeam,
-          status: match.status
-        }
-      })
-      return cleanedData;
-  }
-
-  changeOneLeaguesMatches = e => {
-
-    let id = parseInt(e.target.id)
-    this.props.handleSelectedLeague(`league${id}`)
-
-    this.props[`league${id}`].length === 0 ?
-
-    fetchOneLeaguesMatches(id).then(data => {
-      const cleanedData = this.cleanMatches(data.api.fixtures)
-      if (id === 525) {
-        this.props.handleLeague1(cleanedData)
-      } else if (id === 530) {
-        this.props.handleChampionsLeague(cleanedData)
-      } else if (id === 754) {
-        this.props.handleBundesliga1(cleanedData)
-      } else {
-        this.props.handlePrimeraDivision(cleanedData)
-      }
-    })
-    .then(() => this.selectLeaguesData())
-    : this.selectLeaguesData()
-  }
 
   selectLeaguesData = () => {
-
-    const filteredMatches = this.props[this.props.selectedLeague].filter(match =>  
+    console.log(this.props.x)
+    const filteredMatches = this.props.x.filter(match =>  
       match.homeTeamName.toUpperCase().includes(this.state.searchTerm.toUpperCase()) ||
       match.awayTeamName.toUpperCase().includes(this.state.searchTerm.toUpperCase())
     )
     return filteredMatches.map(match => {
-        return (
-        <section className="match-container" key={match.fixture_id}>
+
+      return (
+        <Link to={`/${match.league_id}`}  className="match-container" key={match.fixture_id}>
       <div className="match-second-container">
       <p className="team-name home-team-name">{match.homeTeamName}</p>
       <div className="logos-result-container">
@@ -96,7 +54,7 @@ export class Leagues extends Component {
       </div> :
       <p className="date">{match.event_date}</p>}
       <p className="match-status">{match.status}</p>
-    </section>
+    </Link>
       )}
     )
   }
@@ -117,8 +75,8 @@ export class Leagues extends Component {
     return (
       <main className="main">
         <section className="league-tabs-container">
-          <LeaguesTabs changeOneLeaguesMatches={this.changeOneLeaguesMatches}/>
-          <input type="text" onChange={this.handleOnChange} placeholder="Search" className="search-bar"/>
+          <LeaguesTabs changeOneLeaguesMatches={this.props.changeOneLeaguesMatches}/>
+          <input type="text" onChange={this.props.handleOnChange} placeholder="Search" className="search-bar"/>
         </section>
            {this.dataLoading() ?
           <img src={loading} className="loading" alt="loading icon" /> :
