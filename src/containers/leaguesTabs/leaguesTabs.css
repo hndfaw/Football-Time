@@ -21,11 +21,13 @@
   height: 100%;
   display: flex;
   align-items: center;
+  transition: 0.2s;
 }
 
 .league-tab-logo {
   height: 50%;
   width: auto;
+  transition: 0.2s;
 }
 
 .league-tab-name {

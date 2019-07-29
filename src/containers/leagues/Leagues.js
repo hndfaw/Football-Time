@@ -118,7 +118,7 @@ export class Leagues extends Component {
       <main className="main">
         <section className="league-tabs-container">
           <LeaguesTabs changeOneLeaguesMatches={this.changeOneLeaguesMatches}/>
-          <input type="text" onChange={this.handleOnChange} placeholder="Search..." className="search-bar"/>
+          <input type="text" onChange={this.handleOnChange} placeholder="Search" className="search-bar"/>
         </section>
            {this.dataLoading() ?
           <img src={loading} className="loading" alt="loading icon" /> :
