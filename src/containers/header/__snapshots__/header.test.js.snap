@@ -21,7 +21,7 @@ exports[`Header should match the snopshot 1`] = `
       </NavLink>
       <NavLink
         className="one-league-tab"
-        to="/leagues"
+        to="/leagues/524"
       >
         Leagues
       </NavLink>

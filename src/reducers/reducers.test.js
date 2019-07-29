@@ -37,18 +37,35 @@ describe('Reducers', () => {
     it('should return a an array of todays matches', () => {
   
       const expected = [{
-        "awayTeam": undefined,
-        "event_date": "2019-08-31",
-        "fixture_id": undefined,
-        "homeTeam": undefined,
-        "league_id": undefined,
-        "statusShort": undefined,
-        "homeTeamName": 'teamOne',
-        "awayTeamName": 'teamTwo'
+        awayTeamLogo: "https://www.api-football.com/public/teams/2316.png",
+        awayTeamName: "Curico Unido",
+        elapsed: 90,
+        event_date: "2019-07-29",
+        fixture_id: 81891,
+        goalsAwayTeam: 0,
+        goalsHomeTeam: 2,
+        homeTeamLogo: "https://www.api-football.com/public/teams/2326.png",
+        homeTeamName: "Union La Calera",
+        league_id: 303,
+        status: "Match Finished",
+        statusShort: "FT"
       }]
       const expectedAction = {
         type: 'SET_TODAYS_MATCHES',
-        todayMatchesDate: [{event_date: "2019-08-31T00:00:00+00:00", homeTeam: {team_name:"teamOne"}, awayTeam: {team_name:"teamTwo"}}]
+        todayMatchesDate: [{
+          awayTeamLogo: "https://www.api-football.com/public/teams/2316.png",
+          awayTeamName: "Curico Unido",
+          elapsed: 90,
+          event_date: "2019-07-29",
+          fixture_id: 81891,
+          goalsAwayTeam: 0,
+          goalsHomeTeam: 2,
+          homeTeamLogo: "https://www.api-football.com/public/teams/2326.png",
+          homeTeamName: "Union La Calera",
+          league_id: 303,
+          status: "Match Finished",
+          statusShort: "FT"
+        }]
       }
       const result = todaysMatchesReducer([], expectedAction)
       expect(result).toEqual(expected)

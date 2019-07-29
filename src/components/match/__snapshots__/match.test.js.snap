@@ -42,6 +42,11 @@ exports[`Match should match the match snapshot 1`] = `
     />
   </div>
   <p
+    className="date"
+  >
+    2019-08-31T16:30:00+00:00
+  </p>
+  <p
     className="match-status"
   />
 </section>

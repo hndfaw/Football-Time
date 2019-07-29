@@ -1,7 +1,7 @@
 import React from 'react';
 import { App , mapDispatchToProps } from './App';
 import { shallow } from 'enzyme';
-import { setTodaysMatches, leaguesAction } from '../../actions';
+import { setTodaysMatches, leaguesAction, setPremierLeague } from '../../actions';
 
 
 
@@ -28,5 +28,14 @@ describe('App', ()=> {
     mappedProps.handleLeagues(mockMatches);
     expect(mockDispatch).toHaveBeenCalledWith(mockAction);
   })
+
+  it('should dispatch with a setPremierLeague action when handlePremierLeague is called', () => {
+  const mockDispatch = jest.fn();
+  const mockMatch = [{match: 'match'}];
+  const mockAction = setPremierLeague(mockMatch);
+  const mappedProps = mapDispatchToProps(mockDispatch);
+  mappedProps.handlePremierLeague(mockMatch);
+  expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+})
 
 })

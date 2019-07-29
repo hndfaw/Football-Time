@@ -18,7 +18,27 @@ exports[`App should match the snapshot 1`] = `
     />
     <Route
       exact={true}
-      path="/leagues"
+      path="/leagues/524"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/leagues/525"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/leagues/530"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/leagues/754"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/leagues/775"
       render={[Function]}
     />
     <Route
