@@ -20,7 +20,7 @@ export class Header extends Component {
           <NavLink to="/todaysmatches" className="all-leagues-tab">
               Today's Matches
             </NavLink>
-          <NavLink to="/leagues" className="one-league-tab">
+          <NavLink to="/leagues/524" className="one-league-tab">
               Leagues
             </NavLink>
           </div>

@@ -30,8 +30,10 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    fetchTodaysMatches(this.today()).then(data =>
-      this.props.handleTodaysMatches(data.api.fixtures))
+    fetchTodaysMatches(this.today()).then(data => {
+      const cleanedData = this.cleanMatches(data.api.fixtures)
+      this.props.handleTodaysMatches(cleanedData)
+    })
 
     fetchLeagues().then(data =>
       this.props.handleLeagues(data.api.leagues))
@@ -40,39 +42,11 @@ export class App extends Component {
         const cleanedData = this.cleanMatches(data.api.fixtures)
         this.props.handlePremierLeague(cleanedData)
       })
-
-      // fetchOneLeaguesMatches(525).then(data => {
-      //   const cleanedData = this.cleanMatches(data.api.fixtures)
-      //   this.props.handleLeague1(cleanedData)
-      // })
   }
 
-  // changeOneLeaguesMatches = e => {
-  //   let id = parseInt(e.target.id)
-
-  //   this.props.handleSelectedLeague(`league${id}`)
-
-  //   this.props[`league${id}`].length === 0 ?
-
-  //   fetchOneLeaguesMatches(id).then(data => {
-  //     const cleanedData = this.cleanMatches(data.api.fixtures)
-  //     if (id === 525) {
-  //       this.props.handleLeague1(cleanedData)
-  //     } else if (id === 530) {
-  //       this.props.handleChampionsLeague(cleanedData)
-  //     } else if (id === 754) {
-  //       this.props.handleBundesliga1(cleanedData)
-  //     } else {
-  //       this.props.handlePrimeraDivision(cleanedData)
-  //     }
-  //   })
-  //   .then(() => this.selectLeaguesData())
-  //   : this.selectLeaguesData()
-  // }
 
   cleanMatches = data => {
     const cleanedData = data.map(match => {
-
       const date = match.event_date.split("").slice(0, 10).join("")
         return {
           event_date: date,
@@ -103,21 +77,21 @@ export class App extends Component {
             <Route exact path="/todaysmatches" render={() => (
                 dataLoading ?
                 <img src={loading} className="loading" alt="loading icon" /> :
-                <TodaysMatches />
+                <TodaysMatches cleanMatches={this.cleanMatches}/>
             )} />
-            <Route exact path="/524" render={() => (
+            <Route exact path="/leagues/524" render={() => (
                 <Leagues matches={this.props.league524} />
                 )} />
-            <Route exact path="/525" render={() => (
+            <Route exact path="/leagues/525" render={() => (
                 <Leagues matches={this.props.league525}  />
                 )} />
-            <Route exact path="/530" render={() => (
+            <Route exact path="/leagues/530" render={() => (
                 <Leagues matches={this.props.league530}  />
                 )} />
-            <Route exact path="/754" render={() => (
+            <Route exact path="/leagues/754" render={() => (
                 <Leagues matches={this.props.league754}  />
                 )} />
-            <Route exact path="/775" render={() => (
+            <Route exact path="/leagues/775" render={() => (
                 <Leagues matches={this.props.league775}  />
                 )} />
             <Route render={() => (

@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import { fetchOneLeaguesMatches } from '../../apiCalls';
-import { setTodaysMatches, leaguesAction, setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
+import { setPremierLeague, setLeague1, setChampionsLeague, setBundesliga1, setPrimeraDivision, setSelectedLeague } from '../../actions';
 
 export class LeaguesTabs extends Component {
 
   fetchData = e => {
     let id = parseInt(e.target.id)
 
-      // this.props.handleSelectedLeague(`league${id}`)
+      this.props.handleSelectedLeague(`league${id}`)
   
       this.props[`league${id}`].length === 0 ?
   
@@ -60,7 +60,7 @@ export class LeaguesTabs extends Component {
     const leagueTab = leaguesData.map(league => {
       const btnStyle = (selectedId === league.league_id) ? {background: 'rgba(0,0,0,0.1)'} : null
       return (
-        <NavLink  to={`/${league.league_id}`} className="league-tab" key={league.league_id} id={league.league_id}>
+        <NavLink  to={`/leagues/${league.league_id}`} className="league-tab" key={league.league_id} id={league.league_id}>
           <button onClick={this.fetchData} style={btnStyle} className="league-btn" id={league.league_id}></button>
           <div className="league-tab-inner-container">
             <img src={league.logo} alt="league logo" className="league-tab-logo" />

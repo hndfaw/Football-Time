@@ -28,7 +28,7 @@ export class Leagues extends Component {
     return filteredMatches.map(match => {
 
       return (
-        <Link to={`/${match.league_id}`}  className="match-container" key={match.fixture_id}>
+        <Link to={`/leagues/${match.league_id}`}  className="match-container" key={match.fixture_id}>
       <div className="match-second-container">
       <p className="team-name home-team-name">{match.homeTeamName}</p>
       <div className="logos-result-container">

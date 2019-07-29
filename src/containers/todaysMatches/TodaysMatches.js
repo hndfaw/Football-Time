@@ -11,7 +11,10 @@ import { setTodaysMatches } from '../../actions';
 export class TodaysMatches extends Component {
 
   changeTodaysDate = e => {
-    fetchTodaysMatches(e.target.value).then(data => this.props.handleTodaysMatches(data.api.fixtures))
+    fetchTodaysMatches(e.target.value).then(data => {
+      const cleanedData = this.props.cleanMatches(data.api.fixtures)
+      this.props.handleTodaysMatches(cleanedData)
+      })
   }
 
   filteredLeagus = () => {
