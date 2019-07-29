@@ -159,5 +159,4 @@ export const mapDispatchToProps = dispatch => ({
   handlePremierLeague: data => dispatch(setPremierLeague(data)),
 })
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(App);
