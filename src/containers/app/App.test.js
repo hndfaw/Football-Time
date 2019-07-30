@@ -1,8 +1,7 @@
 import React from 'react';
-import { App , mapDispatchToProps } from './App';
+import { App , mapDispatchToProps, mapStateToProps } from './App';
 import { shallow } from 'enzyme';
 import { setTodaysMatches, leaguesAction, setPremierLeague } from '../../actions';
-import { fetchTodaysMatches } from '../../apiCalls';
 
 
 
@@ -110,5 +109,71 @@ describe('App', ()=> {
     let wrapper = shallow(<App onDayDate={{date: '2019-01-01'}}  todaysMatches={[{match: 'match'}]}/>);
     expect(wrapper.instance().today()).toEqual(expected())
   })
+
+  it('should return an array of Todays Matches', () => {
+    const mockState = {
+      todaysMatches: [{match: 'match'}],
+    }
+    const expected = {
+      todaysMatches: [{match: 'match'}]
+    }
+    const mappedProps = mapStateToProps(mockState)
+    expect(mappedProps).toEqual(expected)
+  });
+
+  it('should return an array of League 524', () => {
+    const mockState = {
+      league524: [{match: 'match'}],
+    }
+    const expected = {
+      league524: [{match: 'match'}]
+    }
+    const mappedProps = mapStateToProps(mockState)
+    expect(mappedProps).toEqual(expected)
+  });
+
+  it('should return an array of League 525', () => {
+    const mockState = {
+      league525: [{match: 'match'}],
+    }
+    const expected = {
+      league525: [{match: 'match'}]
+    }
+    const mappedProps = mapStateToProps(mockState)
+    expect(mappedProps).toEqual(expected)
+  });
+
+  it('should return an array of League 530', () => {
+    const mockState = {
+      league530: [{match: 'match'}],
+    }
+    const expected = {
+      league530: [{match: 'match'}]
+    }
+    const mappedProps = mapStateToProps(mockState)
+    expect(mappedProps).toEqual(expected)
+  });
+
+  it('should return an array of League 754', () => {
+    const mockState = {
+      league754: [{match: 'match'}],
+    }
+    const expected = {
+      league754: [{match: 'match'}]
+    }
+    const mappedProps = mapStateToProps(mockState)
+    expect(mappedProps).toEqual(expected)
+  });
+
+  it('should return an array of League 775', () => {
+    const mockState = {
+      league775: [{match: 'match'}],
+    }
+    const expected = {
+      league775: [{match: 'match'}]
+    }
+    const mappedProps = mapStateToProps(mockState)
+    expect(mappedProps).toEqual(expected)
+  });
 
 })

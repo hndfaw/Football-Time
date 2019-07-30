@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import './match.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 
   export class Match extends Component {
   
   render() {
-    const {match} = this.props
+    const { match } = this.props
     
   return (
     <Link to={`/todaysmatches/${match.fixture_id}`} className="match-container" key={match.fixture_id}>
@@ -35,5 +36,9 @@ import {Link} from 'react-router-dom';
   }
 }
 
+
+Match.propTypes = {
+  match: PropTypes.object,
+}
 
 export default Match
