@@ -29,19 +29,46 @@ export class App extends Component {
     return (yyyy + '-' + mm + '-' + dd);
   }
 
-  componentDidMount() {
-    fetchTodaysMatches(this.today()).then(data => {
-      const cleanedData = this.cleanMatches(data.api.fixtures)
-      this.props.handleTodaysMatches(cleanedData)
-    })
+  // componentDidMount() {
+  //   fetchTodaysMatches(this.today()).then(data => {
+  //     const cleanedData = this.cleanMatches(data.api.fixtures)
+  //     this.props.handleTodaysMatches(cleanedData)
+  //   })
 
-    fetchLeagues().then(data =>
-      this.props.handleLeagues(data.api.leagues))
+  //   fetchLeagues().then(data =>
+  //     this.props.handleLeagues(data.api.leagues))
 
-      fetchOneLeaguesMatches(524).then(data => {
+  //     fetchOneLeaguesMatches(524).then(data => {
+  //       const cleanedData = this.cleanMatches(data.api.fixtures)
+  //       this.props.handlePremierLeague(cleanedData)
+  //     })
+  // }
+
+  async componentDidMount() {
+    try {
+      const data = await fetchTodaysMatches(this.today())
         const cleanedData = this.cleanMatches(data.api.fixtures)
-        this.props.handlePremierLeague(cleanedData)
-      })
+        this.props.handleTodaysMatches(cleanedData)
+
+    } catch(error) {
+      throw Error ('error fetching data')
+    }
+
+    try {
+      const data = await fetchLeagues()
+        this.props.handleLeagues(data.api.leagues)
+    } catch(error) {
+      throw Error ('error fetching data')
+    }
+
+    try {
+      const data = await fetchOneLeaguesMatches(524)
+      const cleanedData = this.cleanMatches(data.api.fixtures)
+      this.props.handlePremierLeague(cleanedData)
+    } catch(error) {
+      throw Error ('error fetching data')
+    }
+               
   }
 
 
