@@ -47,6 +47,7 @@ export class App extends Component {
 
   cleanMatches = data => {
     const cleanedData = data.map(match => {
+
       const date = match.event_date.split("").slice(0, 10).join("")
         return {
           event_date: date,

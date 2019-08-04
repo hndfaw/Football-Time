@@ -33,7 +33,7 @@ export class Header extends Component {
 
 Header.propTypes = {
   leaguesData : PropTypes.array,
-  
+  selectedLeague: PropTypes.string,
 }
 
 export const mapStateToProps = state => ({

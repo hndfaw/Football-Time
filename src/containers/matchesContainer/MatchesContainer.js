@@ -25,7 +25,8 @@ export class MatchesContainer extends Component {
 }
 
 MatchesContainer.propTypes = {
-  todaysMatches: PropTypes.array
+  todaysMatches: PropTypes.array,
+  id: PropTypes.number
 }
 
 export const mapStateToProps = state => ({

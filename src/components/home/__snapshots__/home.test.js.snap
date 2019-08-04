@@ -2,10 +2,15 @@
 
 exports[`Home should match the match snapshot 1`] = `
 <div>
-  <p
+  <h2
     className="welcome"
   >
-    Welcome to Football Time! in the navbar click on a button
-  </p>
+    Welcome to Football Time! 
+  </h2>
+  <img
+    alt="homepage img"
+    className="homepage-img"
+    src="welcome-page.jpg"
+  />
 </div>
 `;

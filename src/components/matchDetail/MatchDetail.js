@@ -1,5 +1,6 @@
 import React from 'react';
 import './matchDetail.css';
+import PropTypes from 'prop-types';
 
 
 export const MatchDetail = ({ homeTeamLogo, awayTeamLogo, homeTeamName, goalsHomeTeam, goalsAwayTeam, event_date, awayTeamName, status}) => {
@@ -22,6 +23,17 @@ export const MatchDetail = ({ homeTeamLogo, awayTeamLogo, homeTeamName, goalsHom
     </section>
     
   )
+}
+
+MatchDetail.propTypes = {
+  homeTeamLogo : PropTypes.string,
+  awayTeamLogo : PropTypes.string,
+  homeTeamName : PropTypes.string,
+  goalsHomeTeam : PropTypes.number,
+  goalsAwayTeam : PropTypes.number,
+  event_date: PropTypes.string,
+  awayTeamName : PropTypes.string,
+  status: PropTypes.string
 }
 
 
