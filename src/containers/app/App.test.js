@@ -2,10 +2,61 @@ import React from 'react';
 import { App , mapDispatchToProps, mapStateToProps } from './App';
 import { shallow } from 'enzyme';
 import { setTodaysMatches, leaguesAction, setPremierLeague } from '../../actions';
+import { fetchTodaysMatches, fetchLeagues, fetchOneLeaguesMatches } from '../../apiCalls';
 
+jest.mock('../../apiCalls', () => ({
+  fetchTodaysMatches: jest.fn().mockImplementation(() => {
+    return [{match: 'match'}]
+  }),
+
+  fetchLeagues: jest.fn().mockImplementation(() => {
+    return [{league: 'league'}]
+  }),
+  
+  fetchOneLeaguesMatches: jest.fn().mockImplementation(() => {
+    return [{match: 'match'}]
+  })
+}));
 
 
 describe('App', ()=> {
+
+
+  it('should call fetchTodaysMatches when component mounts', () => {
+    let wrapper = shallow(<App todaysMatches={[{match: 'match'}]}/>);
+    fetchTodaysMatches.mockResolvedValue([{match: 'match'}]);
+    wrapper.instance().componentDidMount();
+    expect(fetchTodaysMatches).toHaveBeenCalled();
+  });
+
+  it.skip('should call fetchLeagues when component mounts', () => {
+
+    let wrapper = shallow(<App todaysMatches={[{match: 'match'}]}/>);
+    fetchLeagues.mockResolvedValue([{match: 'match'}]);
+    wrapper.instance().componentDidMount();
+    expect(fetchLeagues).toHaveBeenCalled();
+  });
+
+  it.skip('should call fetchOneLeaguesMatches when component mounts', () => {
+    let wrapper = shallow(<App todaysMatches={[{match: 'match'}]}/>);
+    fetchOneLeaguesMatches.mockResolvedValue([{match: 'match'}]);
+    wrapper.instance().componentDidMount();
+    expect(fetchOneLeaguesMatches).toHaveBeenCalled();
+  });
+
+  
+
+
+
+  // it.skip('componenetDidMoutn', () => {
+  //   const props = {handleTodaysMatches: jest.fn(), onDayDate: {date: '2019-01-01'}, todaysMatches: [{match: 'match'}]}
+  //   const fetchTodaysMatches = jest.fn()
+  //   let wrapper = shallow(<App {...props}/>);
+
+  //   wrapper.instance().componentDidMount()
+  //   expect(fetchTodaysMatches).toHaveBeenCalled()
+  // })
+
   it('should match the snapshot', ()=> {
     let wrapper = shallow(<App onDayDate={{date: '2019-01-01'}} todaysMatches={[{match: 'match'}]}/>);
     expect(wrapper).toMatchSnapshot();
@@ -83,14 +134,9 @@ describe('App', ()=> {
     expect(result).toEqual(cleanData);
   })
 
-  it.skip('componenetDidMoutn', () => {
-    const props = {handleTodaysMatches: jest.fn(), onDayDate: {date: '2019-01-01'}, todaysMatches: [{match: 'match'}]}
-    const fetchTodaysMatches = jest.fn()
-    let wrapper = shallow(<App {...props}/>);
 
-    wrapper.instance().componentDidMount()
-    expect(fetchTodaysMatches).toHaveBeenCalled()
-  })
+
+  
 
   it('today', () => {
     const expected = () => {
